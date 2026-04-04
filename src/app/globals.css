@@ -2,26 +2,254 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Base ──────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green: #10B981;
+  --green-dark: #065F46;
+  --bg: #0A0A0A;
+  --card: #141414;
+  --card-alt: #1A1A1A;
+  --text: #FFFFFF;
+  --muted: #A0A0A0;
+  --border: #222222;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+
+/* ─── Gradient text ──────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #10B981 0%, #34d399 50%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Buttons ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #10B981, #065F46);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 24px rgba(16,185,129,0.45), 0 8px 32px rgba(0,0,0,0.4);
+  opacity: 0.95;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  transform: scale(1.03);
+  border-color: rgba(16,185,129,0.5);
+  background: rgba(16,185,129,0.06);
+  box-shadow: 0 0 16px rgba(16,185,129,0.15);
+}
+
+/* ─── Nav glass ──────────────────────────────────────── */
+.nav-transparent { background: transparent; border-bottom: 1px solid transparent; }
+.nav-glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10, 10, 10, 0.88);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ─── Hero background ────────────────────────────────── */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 70% 55% at 25% 45%, rgba(16,185,129,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 75% 60%, rgba(6,95,70,0.06) 0%, transparent 55%),
+    #0A0A0A;
+}
+
+/* Noise texture */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ─── Floating browser mockup ────────────────────────── */
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+.animate-float {
+  animation: float-up-down 5s ease-in-out infinite;
+}
+
+/* ─── Hero headline load animation ──────────────────── */
+@keyframes hero-line-in {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-line {
+  opacity: 0;
+}
+.hero-line.loaded {
+  animation: hero-line-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-delay-0 { animation-delay: 0.05s; }
+.hero-delay-1 { animation-delay: 0.2s; }
+.hero-delay-2 { animation-delay: 0.35s; }
+.hero-delay-3 { animation-delay: 0.5s; }
+.hero-delay-4 { animation-delay: 0.65s; }
+.hero-delay-5 { animation-delay: 0.8s; }
+
+/* ─── Scroll reveal — fade up ────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll reveal — fade from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scroll reveal — fade from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scroll reveal — scale up (for pricing) */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays for cards */
+.stagger-1  { transition-delay: 0.08s; }
+.stagger-2  { transition-delay: 0.16s; }
+.stagger-3  { transition-delay: 0.24s; }
+.stagger-4  { transition-delay: 0.32s; }
+.stagger-5  { transition-delay: 0.40s; }
+.stagger-6  { transition-delay: 0.48s; }
+
+/* ─── Card base ──────────────────────────────────────── */
+.card {
+  background: #141414;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card:hover {
+  border-color: rgba(16,185,129,0.35);
+  box-shadow: 0 0 0 1px rgba(16,185,129,0.12), 0 12px 40px rgba(0,0,0,0.4);
+  transform: translateY(-2px);
+}
+.card-alt { background: #1A1A1A; }
+
+/* Green left border */
+.card-green-left {
+  border-left: 2px solid #10B981 !important;
+}
+
+/* Green glow border (for Pro pricing) */
+.card-glow {
+  border-color: rgba(16,185,129,0.5) !important;
+  box-shadow: 0 0 0 1px rgba(16,185,129,0.2), 0 0 40px rgba(16,185,129,0.08), 0 16px 48px rgba(0,0,0,0.5) !important;
+}
+
+/* ─── Icon container ─────────────────────────────────── */
+.icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(16,185,129,0.12);
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Section label ──────────────────────────────────── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #10B981;
+}
+
+/* ─── Connecting line (How It Works) ─────────────────── */
+.step-line {
+  position: absolute;
+  top: 38px;
+  left: calc(50% + 48px);
+  right: calc(-50% + 48px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(16,185,129,0.6), rgba(16,185,129,0.15));
 }
