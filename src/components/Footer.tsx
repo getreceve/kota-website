@@ -21,29 +21,29 @@ const columns = [
   {
     heading: "Why Kota",
     links: [
-      { label: "Features", href: "#features" },
+      { label: "Features",     href: "#features" },
       { label: "How It Works", href: "#how-it-works" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About", href: "#" },
+      { label: "About",   href: "#" },
       { label: "Contact", href: "mailto:hello@getkota.ai" },
     ],
   },
   {
     heading: "Legal",
     links: [
-      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Privacy Policy",   href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
     ],
   },
   {
     heading: "Social",
     links: [
-      { label: "LinkedIn", href: "https://linkedin.com/company/getkota", external: true },
-      { label: "Twitter / X", href: "https://twitter.com/getkota", external: true },
+      { label: "LinkedIn",   href: "https://linkedin.com/company/getkota", external: true },
+      { label: "Twitter / X", href: "https://twitter.com/getkota",          external: true },
     ],
   },
 ];
@@ -51,20 +51,23 @@ const columns = [
 export default function Footer() {
   return (
     <footer style={{ background: "#0A0A0A", borderTop: "1px solid #1a1a1a" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-14">
+
+        {/* Top section: brand + link columns */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
           {/* Brand column */}
           <div className="lg:col-span-1">
             <a href="#"><Logo /></a>
-            <p className="mt-3 text-xs leading-relaxed" style={{ color: "#555", maxWidth: 180 }}>
+            <p className="mt-3 text-xs leading-relaxed" style={{ color: "#555", maxWidth: 200 }}>
               Your Sales Team&apos;s Unfair Advantage
             </p>
-            <div className="flex gap-3 mt-5">
+            <div className="mt-5">
               <a
                 href={DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-medium px-3.5 py-2 rounded-lg text-white transition-all duration-200 hover:opacity-90"
+                className="inline-flex text-xs font-medium px-3.5 py-2 rounded-lg text-white transition-all duration-200 hover:opacity-90"
                 style={{ background: "linear-gradient(135deg, #10B981, #065F46)" }}
               >
                 Book a Demo
@@ -72,11 +75,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
+          {/* Link columns:
+              mobile  → 2 columns (2×2)
+              sm      → 4 columns
+              lg      → 4 columns (inside col-span-4) */}
           <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-8">
             {columns.map((col) => (
               <div key={col.heading}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#444" }}>
+                <p
+                  className="text-xs font-bold uppercase tracking-widest mb-4"
+                  style={{ color: "#444" }}
+                >
                   {col.heading}
                 </p>
                 <ul className="flex flex-col gap-3">
@@ -101,7 +110,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          className="mt-10 sm:mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ borderTop: "1px solid #1a1a1a" }}
         >
           <p className="text-xs" style={{ color: "#444" }}>

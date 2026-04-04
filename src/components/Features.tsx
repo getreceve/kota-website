@@ -65,26 +65,29 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="features" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <div className="text-center mb-14 reveal">
-          <p className="section-label mb-4">Everything Inside Kota</p>
-          <h2 className="font-extrabold text-white leading-tight" style={{ fontSize: "clamp(30px,4vw,50px)" }}>
+        <div className="text-center mb-10 sm:mb-14 reveal">
+          <p className="section-label mb-3 sm:mb-4">Everything Inside Kota</p>
+          <h2
+            className="font-extrabold text-white leading-tight"
+            style={{ fontSize: "clamp(26px, 4vw, 50px)" }}
+          >
             Built for Every Layer of
             <br />
             <span className="gradient-text">Your Sales Operation</span>
           </h2>
         </div>
 
-        {/* 2×3 grid */}
+        {/* 1 col mobile → 2 col sm → 3 col lg */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f, i) => (
             <div
               key={i}
-              className={`card p-7 relative reveal stagger-${i + 1}`}
+              className={`card p-5 sm:p-7 relative reveal stagger-${i + 1}`}
             >
-              {/* Coming soon badge */}
               {f.badge && (
                 <div
                   className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-xs font-semibold"
@@ -97,17 +100,8 @@ export default function Features() {
                   {f.badge}
                 </div>
               )}
-
-              {/* Hover glow corner */}
-              <div
-                className="absolute top-0 right-0 w-28 h-28 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: "radial-gradient(circle at top right, rgba(16,185,129,0.07), transparent 70%)",
-                }}
-              />
-
-              <div className="icon-box mb-5">{f.icon}</div>
-              <h3 className="text-white font-bold mb-2.5" style={{ fontSize: 16 }}>{f.title}</h3>
+              <div className="icon-box mb-4 sm:mb-5">{f.icon}</div>
+              <h3 className="text-white font-bold mb-2 sm:mb-2.5 text-sm sm:text-base">{f.title}</h3>
               <p className="text-[#A0A0A0] text-sm leading-relaxed">{f.body}</p>
             </div>
           ))}

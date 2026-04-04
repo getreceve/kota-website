@@ -32,25 +32,28 @@ const problems = [
 
 export default function Problem() {
   return (
-    <section id="problem" className="py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="problem" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-14 reveal">
-          <p className="section-label mb-4">The Problem</p>
-          <h2 className="font-extrabold text-white leading-tight" style={{ fontSize: "clamp(30px,4vw,48px)", maxWidth: 560 }}>
+        <div className="mb-10 sm:mb-14 reveal">
+          <p className="section-label mb-3 sm:mb-4">The Problem</p>
+          <h2
+            className="font-extrabold text-white leading-tight"
+            style={{ fontSize: "clamp(26px, 4vw, 48px)", maxWidth: 560 }}
+          >
             Your Best Coaching Is Locked Inside Calls Nobody Reviews
           </h2>
         </div>
 
-        {/* Cards */}
+        {/* Cards — 1 col mobile, 3 col md+ */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {problems.map((p, i) => (
             <div
               key={i}
-              className={`card card-alt card-green-left reveal stagger-${i + 1} p-7`}
+              className={`card card-alt card-green-left reveal stagger-${i + 1} p-5 sm:p-7`}
             >
-              <div className="icon-box mb-5">{p.icon}</div>
-              <h3 className="text-white font-bold mb-3" style={{ fontSize: 17 }}>{p.title}</h3>
+              <div className="icon-box mb-4 sm:mb-5">{p.icon}</div>
+              <h3 className="text-white font-bold mb-2 sm:mb-3 text-base sm:text-[17px]">{p.title}</h3>
               <p className="text-[#A0A0A0] text-sm leading-relaxed">{p.body}</p>
             </div>
           ))}

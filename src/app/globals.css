@@ -16,7 +16,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   background: var(--bg);
@@ -92,6 +95,22 @@ body {
   -webkit-backdrop-filter: blur(20px);
   background: rgba(10, 10, 10, 0.88);
   border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ─── Mobile overlay ─────────────────────────────────── */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes fade-in-overlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.mobile-overlay {
+  animation: slide-in-right 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.mobile-overlay-bg {
+  animation: fade-in-overlay 0.25s ease forwards;
 }
 
 /* ─── Hero background ────────────────────────────────── */
@@ -177,6 +196,14 @@ body {
   transform: translateX(0);
 }
 
+/* On mobile, convert side-slides to simple fade-up to prevent overflow */
+@media (max-width: 767px) {
+  .reveal-left  { transform: translateY(20px); }
+  .reveal-right { transform: translateY(20px); }
+  .reveal-left.visible  { transform: translateY(0); }
+  .reveal-right.visible { transform: translateY(0); }
+}
+
 /* Scroll reveal — scale up (for pricing) */
 .reveal-scale {
   opacity: 0;
@@ -196,6 +223,16 @@ body {
 .stagger-4  { transition-delay: 0.32s; }
 .stagger-5  { transition-delay: 0.40s; }
 .stagger-6  { transition-delay: 0.48s; }
+
+/* Reduce stagger on mobile for snappier feel */
+@media (max-width: 767px) {
+  .stagger-1  { transition-delay: 0.04s; }
+  .stagger-2  { transition-delay: 0.08s; }
+  .stagger-3  { transition-delay: 0.12s; }
+  .stagger-4  { transition-delay: 0.16s; }
+  .stagger-5  { transition-delay: 0.20s; }
+  .stagger-6  { transition-delay: 0.24s; }
+}
 
 /* ─── Card base ──────────────────────────────────────── */
 .card {
@@ -242,14 +279,4 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #10B981;
-}
-
-/* ─── Connecting line (How It Works) ─────────────────── */
-.step-line {
-  position: absolute;
-  top: 38px;
-  left: calc(50% + 48px);
-  right: calc(-50% + 48px);
-  height: 1px;
-  background: linear-gradient(90deg, rgba(16,185,129,0.6), rgba(16,185,129,0.15));
 }

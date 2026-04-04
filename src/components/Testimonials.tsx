@@ -29,27 +29,31 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="proof" className="py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="proof" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <div className="text-center mb-14 reveal">
-          <p className="section-label mb-4">What Sales Leaders Are Saying</p>
-          <h2 className="font-extrabold text-white leading-tight" style={{ fontSize: "clamp(30px,4vw,50px)" }}>
+        <div className="text-center mb-10 sm:mb-14 reveal">
+          <p className="section-label mb-3 sm:mb-4">What Sales Leaders Are Saying</p>
+          <h2
+            className="font-extrabold text-white leading-tight"
+            style={{ fontSize: "clamp(26px, 4vw, 50px)" }}
+          >
             Built for the Realities of
             <br />
             <span className="gradient-text">Debt Settlement Sales</span>
           </h2>
         </div>
 
-        {/* Quote cards */}
+        {/* Quote cards — 1 col mobile, 3 col md+ */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`card p-7 flex flex-col ${t.dir} stagger-${i + 1}`}
+              className={`card p-5 sm:p-7 flex flex-col ${t.dir} stagger-${i + 1}`}
             >
               {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
+              <div className="flex gap-0.5 mb-3 sm:mb-4">
                 {[...Array(5)].map((_, j) => (
                   <svg key={j} className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#10B981">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -58,16 +62,19 @@ export default function Testimonials() {
               </div>
 
               {/* Quote mark */}
-              <div className="text-4xl font-serif mb-3 leading-none" style={{ color: "rgba(16,185,129,0.3)" }}>
+              <div className="text-4xl font-serif mb-2 sm:mb-3 leading-none" style={{ color: "rgba(16,185,129,0.3)" }}>
                 &ldquo;
               </div>
 
-              <p className="text-white text-sm leading-relaxed flex-1 mb-6 font-medium">
+              <p className="text-white text-sm leading-relaxed flex-1 mb-5 sm:mb-6 font-medium">
                 {t.quote}
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <div
+                className="flex items-center gap-3 pt-4 sm:pt-5"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+              >
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
                   style={{ background: "linear-gradient(135deg, #10B981, #065F46)" }}

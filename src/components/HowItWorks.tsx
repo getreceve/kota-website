@@ -35,24 +35,24 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="how-it-works" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <div className="text-center mb-20 reveal">
-          <p className="section-label mb-4">Simple By Design</p>
-          <h2 className="font-extrabold text-white leading-tight" style={{ fontSize: "clamp(30px,4vw,50px)" }}>
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20 reveal">
+          <p className="section-label mb-3 sm:mb-4">Simple By Design</p>
+          <h2
+            className="font-extrabold text-white leading-tight"
+            style={{ fontSize: "clamp(26px, 4vw, 50px)" }}
+          >
             Every Call Makes Your Whole Team Smarter
           </h2>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-6 relative">
-          {/*
-            Single continuous line spanning from the right edge of circle 1
-            to the left edge of circle 3. Each circle is w-20 (80px), centered
-            in its 1/3 column, so its center sits at 1/6, 3/6, 5/6 of the row.
-            We start 40px right of the first center and end 40px left of the last.
-          */}
+        {/* Steps — stacked on mobile, horizontal on lg+ */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-6 relative">
+
+          {/* Connecting line — desktop only */}
           <div
             className="hidden lg:block absolute z-0 h-px"
             style={{
@@ -63,10 +63,24 @@ export default function HowItWorks() {
             }}
           />
 
+          {/* Mobile vertical connector */}
+          <div
+            className="lg:hidden absolute left-[39px] z-0"
+            style={{
+              top: 80,
+              bottom: 80,
+              width: 1,
+              background: "linear-gradient(180deg, rgba(16,185,129,0.5) 0%, rgba(16,185,129,0.1) 100%)",
+            }}
+          />
+
           {steps.map((step, i) => (
-            <div key={i} className={`flex flex-col items-center text-center reveal stagger-${i + 1} relative z-10`}>
+            <div
+              key={i}
+              className={`flex flex-col lg:items-center lg:text-center reveal stagger-${i + 1} relative z-10`}
+            >
               {/* Step circle */}
-              <div className="relative mb-7">
+              <div className="relative mb-5 sm:mb-7 flex-shrink-0 self-start lg:self-auto">
                 <div
                   className="w-20 h-20 rounded-full flex items-center justify-center"
                   style={{
@@ -77,26 +91,33 @@ export default function HowItWorks() {
                 >
                   {step.icon}
                 </div>
-                {/* Number badge */}
                 <span
-                  className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                  className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center font-bold text-white"
                   style={{ background: "linear-gradient(135deg, #10B981, #065F46)", fontSize: 10 }}
                 >
                   {i + 1}
                 </span>
               </div>
 
-              <div
-                className="text-xs font-bold mb-3"
-                style={{ color: "#10B981", letterSpacing: "0.15em" }}
-              >
-                {step.number}
+              <div className="lg:hidden pl-1">
+                <div className="text-xs font-bold mb-2" style={{ color: "#10B981", letterSpacing: "0.15em" }}>
+                  {step.number}
+                </div>
+                <h3 className="text-white font-bold mb-2 text-lg">{step.title}</h3>
+                <p className="text-[#A0A0A0] text-sm leading-relaxed">{step.body}</p>
               </div>
-              <h3 className="text-white font-bold mb-3" style={{ fontSize: 19 }}>{step.title}</h3>
-              <p className="text-[#A0A0A0] text-sm leading-relaxed max-w-xs">{step.body}</p>
+
+              <div className="hidden lg:block">
+                <div className="text-xs font-bold mb-3" style={{ color: "#10B981", letterSpacing: "0.15em" }}>
+                  {step.number}
+                </div>
+                <h3 className="text-white font-bold mb-3" style={{ fontSize: 19 }}>{step.title}</h3>
+                <p className="text-[#A0A0A0] text-sm leading-relaxed max-w-xs">{step.body}</p>
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

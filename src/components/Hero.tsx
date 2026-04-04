@@ -50,15 +50,15 @@ export default function Hero() {
     <section
       id="hero"
       className="relative hero-bg noise overflow-hidden"
-      style={{ minHeight: "100vh", paddingTop: 68 }}
+      style={{ minHeight: "100svh", paddingTop: 64 }}
     >
-      {/* Ambient radial */}
+      {/* Ambient radial — scaled back on mobile */}
       <div
         className="absolute pointer-events-none"
         style={{
-          top: "15%",
-          left: "5%",
-          width: 560,
+          top: "10%",
+          left: "-5%",
+          width: "min(560px, 90vw)",
           height: 400,
           borderRadius: "50%",
           background: "radial-gradient(ellipse, rgba(16,185,129,0.11) 0%, transparent 70%)",
@@ -66,28 +66,32 @@ export default function Hero() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16 lg:gap-12 py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-12 py-12 sm:py-16 lg:py-24">
+
         {/* ── Left column ── */}
-        <div className="flex-1 max-w-xl">
+        <div className="flex-1 w-full lg:max-w-xl">
+
           {/* Eyebrow pill */}
           <div className={cls(0)}>
             <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-7"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 sm:mb-7"
               style={{
                 background: "rgba(16,185,129,0.08)",
                 border: "1px solid rgba(16,185,129,0.25)",
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#10B981" }} />
-              <span className="text-xs font-semibold text-emerald-400 tracking-wide">
+              <span className="text-[11px] sm:text-xs font-semibold text-emerald-400 tracking-wide">
                 Built for Debt Settlement Sales Teams
               </span>
             </div>
           </div>
 
           {/* Headline */}
-          <h1 className="font-extrabold text-white leading-[1.04] tracking-tight mb-6"
-            style={{ fontSize: "clamp(36px, 5.5vw, 60px)" }}>
+          <h1
+            className="font-extrabold text-white leading-[1.04] tracking-tight mb-5 sm:mb-6"
+            style={{ fontSize: "clamp(34px, 7vw, 60px)" }}
+          >
             <span className={`block ${cls(1)}`}>Your Top Closer</span>
             <span className={`block ${cls(2)}`}>Has A System.</span>
             <span className={`block gradient-text ${cls(3)}`}>Now Your Whole</span>
@@ -95,8 +99,10 @@ export default function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className={`text-[#A0A0A0] leading-relaxed mb-9 ${cls(4)}`}
-            style={{ fontSize: 17, maxWidth: 480 }}>
+          <p
+            className={`text-[#A0A0A0] leading-relaxed mb-7 sm:mb-9 text-sm sm:text-base lg:text-[17px] ${cls(4)}`}
+            style={{ maxWidth: 480 }}
+          >
             Kota analyzes every call, indexes every objection and rebuttal, and
             gives your entire debt settlement team access to what your best rep
             already knows.{" "}
@@ -106,28 +112,33 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className={`flex flex-wrap gap-3 mb-10 ${cls(5)}`}>
-            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <div className={`flex flex-wrap gap-3 mb-8 sm:mb-10 ${cls(5)}`}>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary !text-sm sm:!text-base"
+            >
               Book a Demo
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="#how-it-works" className="btn-ghost">
+            <a href="#how-it-works" className="btn-ghost !text-sm sm:!text-base">
               See How It Works
             </a>
           </div>
 
-          {/* Stats */}
-          <div className={`flex flex-col sm:flex-row flex-wrap gap-3 ${cls(5)}`}>
-            <StatPill value={10000} suffix="+" label="Calls Analyzed" />
-            <StatPill value={43} suffix="%" label="Avg Improvement in Objection Overcome Rate" />
-            <StatPill value={5} label="Days to Full Onboarding" suffix=" Days" />
+          {/* Stats — stack vertically on mobile, row on sm+ */}
+          <div className={`flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3 ${cls(5)}`}>
+            <StatPill value={10000} suffix="+"  label="Calls Analyzed" />
+            <StatPill value={43}    suffix="%"  label="Avg Improvement in Objection Overcome Rate" />
+            <StatPill value={5}     suffix=" Days" label="to Full Onboarding" />
           </div>
         </div>
 
         {/* ── Right column — browser mockup ── */}
-        <div className={`flex-1 w-full lg:max-w-none max-w-lg ${cls(2)}`}>
+        <div className={`flex-1 w-full min-w-0 ${cls(2)}`}>
           <BrowserMockup />
         </div>
       </div>
