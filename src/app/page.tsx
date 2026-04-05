@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import LogoBanner from "@/components/LogoBanner";
 import Problem from "@/components/Problem";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
@@ -14,6 +15,7 @@ export default function Home() {
       <ScrollReveal />
       <Nav />
       <Hero />
+      <LogoBanner />
       <Problem />
       <HowItWorks />
       <Features />
