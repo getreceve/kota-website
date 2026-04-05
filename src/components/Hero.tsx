@@ -50,7 +50,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative hero-bg noise overflow-hidden"
-      style={{ minHeight: "100svh", paddingTop: 64 }}
+      style={{ paddingTop: 64 }}
     >
       {/* Ambient radial — scaled back on mobile */}
       <div
