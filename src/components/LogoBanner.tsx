@@ -37,7 +37,7 @@ function LogoItem({ logo }: { logo: Logo }) {
       style={{
         height: LOGO_HEIGHT,
         width: "auto",
-        maxWidth: 180,
+        maxWidth: 220,
         opacity: 0.65,
         display: "block",
         flexShrink: 0,
