@@ -1,31 +1,29 @@
 "use client";
 
-const LOGOS = [
-  { alt: "8x8",         src: "/logos/8x8-logo.svg.png" },
-  { alt: "Convoso",     src: "/logos/convoso-logo.png" },
-  { alt: "DebtPayPro",  src: "/logos/debtpaypro-logo.png" },
-  { alt: "Forth",       src: "/logos/forth-logo.png" },
-  { alt: "HighLevel",   src: "/logos/highlevel-logo.png" },
-  { alt: "HubSpot",     src: "/logos/hubspot-logo.png" },
-  { alt: "Kixie",       src: "/logos/kixie-logo.png" },
-  { alt: "Salesforce",  src: "/logos/salesforce-logo.svg.png" },
-  { alt: "TCN",         src: "/logos/tcn-logo.png" },
+const LOGO_H = 40; // px — base height for all logos
+
+const LOGOS: { alt: string; src: string; height?: number }[] = [
+  { alt: "8x8",        src: "/logos/8x8-logo.svg.png" },
+  { alt: "Convoso",    src: "/logos/convoso-logo.png" },
+  { alt: "DebtPayPro", src: "/logos/debtpaypro-logo.png" },
+  { alt: "Forth",      src: "/logos/forth-logo.png",       height: 80 },
+  { alt: "HighLevel",  src: "/logos/highlevel-logo.png",   height: 80 },
+  { alt: "HubSpot",    src: "/logos/hubspot-logo.png" },
+  { alt: "Kixie",      src: "/logos/kixie-logo.png" },
+  { alt: "Salesforce", src: "/logos/salesforce-logo.svg.png" },
+  { alt: "TCN",        src: "/logos/tcn-logo.png" },
 ];
 
-// Every logo renders at exactly this height; width scales proportionally.
-// This guarantees equal visual weight regardless of each logo's aspect ratio.
-const LOGO_H = 40; // px
-
-function LogoItem({ alt, src }: { alt: string; src: string }) {
+function LogoItem({ alt, src, height }: { alt: string; src: string; height?: number }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}
       style={{
-        height: LOGO_H,
+        height: height ?? LOGO_H,
         width: "auto",
-        maxWidth: 200,
+        maxWidth: 220,
         opacity: 0.75,
         display: "block",
         flexShrink: 0,
@@ -38,8 +36,6 @@ function LogoItem({ alt, src }: { alt: string; src: string }) {
 }
 
 export default function LogoBanner() {
-  // Duplicate the set twice for the seamless infinite scroll:
-  // The track is 200% wide; the animation shifts it -50% (one full set).
   const set = [...LOGOS, ...LOGOS];
 
   return (
@@ -53,7 +49,6 @@ export default function LogoBanner() {
         paddingBottom: 28,
       }}
     >
-      {/* Eyebrow label */}
       <p
         className="text-center section-label mb-5 sm:mb-6 px-4"
         style={{ color: "rgba(16,185,129,0.6)" }}
@@ -61,14 +56,13 @@ export default function LogoBanner() {
         Works With Your Existing Stack
       </p>
 
-      {/* Ticker */}
       <div className="ticker-mask overflow-hidden">
         <div
           className="ticker-track flex items-center"
           style={{ gap: 72, width: "max-content" }}
         >
           {set.map((logo, i) => (
-            <LogoItem key={i} alt={logo.alt} src={logo.src} />
+            <LogoItem key={i} alt={logo.alt} src={logo.src} height={logo.height} />
           ))}
         </div>
       </div>
