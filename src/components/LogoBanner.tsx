@@ -3,22 +3,19 @@
 type Logo = {
   alt: string;
   src: string;
-  width?: number; // optional explicit width override
 };
 
 /*
-  All logos are rendered at a fixed height of 28px with
-  filter: brightness(0) invert(1) so they appear as clean
-  white monochrome marks against the dark background.
-  SVG logos are in /public/logos/; Salesforce + HubSpot
-  come from the SimpleIcons CDN (reliable, MIT-licensed).
+  Full-color logo ticker. All logos are local SVGs in /public/logos/
+  rendered at a consistent height with slight opacity for the
+  "partner integration" look against the dark background.
 */
 
 const LOGOS: Logo[] = [
   { alt: "DebtPayPro",  src: "/logos/debtpaypro.svg" },
   { alt: "GoHighLevel", src: "/logos/gohighlevel.svg" },
-  { alt: "HubSpot",     src: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/hubspot.svg" },
-  { alt: "Salesforce",  src: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/salesforce.svg" },
+  { alt: "HubSpot",     src: "/logos/hubspot.svg" },
+  { alt: "Salesforce",  src: "/logos/salesforce.svg" },
   { alt: "Convoso",     src: "/logos/convoso.svg" },
   { alt: "TCN",         src: "/logos/tcn.svg" },
   { alt: "CallTools",   src: "/logos/calltools.svg" },
@@ -28,7 +25,7 @@ const LOGOS: Logo[] = [
   { alt: "Forth",       src: "/logos/forth.svg" },
 ];
 
-const LOGO_HEIGHT = 28; // px — uniform height for all logos
+const LOGO_HEIGHT = 32; // px — uniform height for all logos
 
 function LogoItem({ logo }: { logo: Logo }) {
   return (
@@ -40,9 +37,8 @@ function LogoItem({ logo }: { logo: Logo }) {
       style={{
         height: LOGO_HEIGHT,
         width: "auto",
-        maxWidth: 160,
-        opacity: 0.5,
-        filter: "brightness(0) invert(1)",
+        maxWidth: 180,
+        opacity: 0.65,
         display: "block",
         flexShrink: 0,
         userSelect: "none",
@@ -81,7 +77,7 @@ export default function LogoBanner() {
       <div className="ticker-mask overflow-hidden">
         <div
           className="ticker-track flex items-center"
-          style={{ gap: 64, width: "max-content" }}
+          style={{ gap: 72, width: "max-content" }}
         >
           {set.map((logo, i) => (
             <LogoItem key={i} logo={logo} />

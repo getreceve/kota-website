@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56">
-  <!-- Simplified Forth diamond/chevron icon -->
-  <path d="M0 28 L18 6 L28 28 L18 50 Z" fill="#000"/>
-  <path d="M16 28 L30 10 L38 28 L30 46 Z" fill="#000" opacity="0.4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60">
+  <defs>
+    <linearGradient id="forth-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C040A0"/>
+      <stop offset="50%" stop-color="#E05020"/>
+      <stop offset="100%" stop-color="#F07A00"/>
+    </linearGradient>
+  </defs>
+  <!-- Simplified open-diamond / chevron icon -->
+  <path d="M4 30 L20 8 L32 30 L20 52 Z" fill="url(#forth-grad)" opacity="0.9"/>
+  <path d="M22 30 L34 12 L44 30 L34 48 Z" fill="url(#forth-grad)" opacity="0.5"/>
   <!-- FORTH text -->
-  <text x="48" y="44" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" fill="#000000" letter-spacing="1">FORTH</text>
+  <text x="55" y="43" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="36" fill="#9CA3AF" letter-spacing="2">FORTH</text>
+  <text x="210" y="43" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#9CA3AF">®</text>
 </svg>
