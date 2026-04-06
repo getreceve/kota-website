@@ -1,74 +1,55 @@
 "use client";
 
+type Logo = {
+  alt: string;
+  src: string;
+  width?: number; // optional explicit width override
+};
+
 /*
-  Logo sources:
-  - HubSpot, Salesforce: SimpleIcons CDN (reliable, MIT-licensed SVGs)
-  - All others: text wordmarks — these are niche/industry-specific tools
-    not available on public icon CDNs
+  All logos are rendered at a fixed height of 28px with
+  filter: brightness(0) invert(1) so they appear as clean
+  white monochrome marks against the dark background.
+  SVG logos are in /public/logos/; Salesforce + HubSpot
+  come from the SimpleIcons CDN (reliable, MIT-licensed).
 */
 
-type Logo =
-  | { type: "img";  alt: string; src: string; height: number }
-  | { type: "text"; name: string; weight: number; italic?: boolean };
-
 const LOGOS: Logo[] = [
-  { type: "text", name: "DebtPayPro",  weight: 600 },
-  { type: "text", name: "GoHighLevel", weight: 500 },
-  {
-    type: "img",
-    alt: "HubSpot",
-    src: "https://cdn.simpleicons.org/hubspot/ffffff",
-    height: 22,
-  },
-  {
-    type: "img",
-    alt: "Salesforce",
-    src: "https://cdn.simpleicons.org/salesforce/ffffff",
-    height: 26,
-  },
-  { type: "text", name: "Convoso",   weight: 600 },
-  { type: "text", name: "TCN",       weight: 700 },
-  { type: "text", name: "CallTools", weight: 500 },
-  { type: "text", name: "Kixie",     weight: 600 },
-  { type: "text", name: "Five9",     weight: 700 },
+  { alt: "DebtPayPro",  src: "/logos/debtpaypro.svg" },
+  { alt: "GoHighLevel", src: "/logos/gohighlevel.svg" },
+  { alt: "HubSpot",     src: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/hubspot.svg" },
+  { alt: "Salesforce",  src: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/salesforce.svg" },
+  { alt: "Convoso",     src: "/logos/convoso.svg" },
+  { alt: "TCN",         src: "/logos/tcn.svg" },
+  { alt: "CallTools",   src: "/logos/calltools.svg" },
+  { alt: "Kixie",       src: "/logos/kixie.svg" },
+  { alt: "Five9",       src: "/logos/five9.svg" },
+  { alt: "8x8",         src: "/logos/8x8.svg" },
+  { alt: "Forth",       src: "/logos/forth.svg" },
 ];
 
-function LogoItem({ logo }: { logo: Logo }) {
-  if (logo.type === "img") {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={logo.src}
-        alt={logo.alt}
-        height={logo.height}
-        style={{
-          height: logo.height,
-          width: "auto",
-          opacity: 0.45,
-          filter: "brightness(0) invert(1)",
-          display: "block",
-          flexShrink: 0,
-        }}
-        loading="lazy"
-        draggable={false}
-      />
-    );
-  }
+const LOGO_HEIGHT = 28; // px — uniform height for all logos
 
+function LogoItem({ logo }: { logo: Logo }) {
   return (
-    <span
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={logo.src}
+      alt={logo.alt}
+      height={LOGO_HEIGHT}
       style={{
-        fontWeight: logo.weight,
-        fontSize: 15,
-        color: "rgba(255,255,255,0.38)",
-        letterSpacing: "-0.01em",
-        whiteSpace: "nowrap",
+        height: LOGO_HEIGHT,
+        width: "auto",
+        maxWidth: 160,
+        opacity: 0.5,
+        filter: "brightness(0) invert(1)",
+        display: "block",
+        flexShrink: 0,
         userSelect: "none",
-        fontFamily: "Inter, sans-serif",
       }}
-    >
-      {logo.name}
-    </span>
+      loading="lazy"
+      draggable={false}
+    />
   );
 }
 
@@ -100,17 +81,10 @@ export default function LogoBanner() {
       <div className="ticker-mask overflow-hidden">
         <div
           className="ticker-track flex items-center"
-          style={{ gap: 56, width: "max-content" }}
+          style={{ gap: 64, width: "max-content" }}
         >
           {set.map((logo, i) => (
-            <LogoItem
-              key={i}
-              logo={
-                /* slightly smaller on mobile is handled by the fontSize/height
-                   already being compact; no JS needed */
-                logo
-              }
-            />
+            <LogoItem key={i} logo={logo} />
           ))}
         </div>
       </div>
