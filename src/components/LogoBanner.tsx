@@ -12,27 +12,40 @@ const LOGOS = [
   { alt: "TCN",         src: "/logos/tcn-logo.png" },
 ];
 
-const LOGO_HEIGHT = 32; // px — uniform height for all logos
+// Fixed container dimensions — every logo is letterboxed to the same box
+const LOGO_W = 96;  // px wide
+const LOGO_H = 36;  // px tall
 
 function LogoItem({ alt, src }: { alt: string; src: string }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={src}
-      alt={alt}
-      height={LOGO_HEIGHT}
+    <div
       style={{
-        height: LOGO_HEIGHT,
-        width: "auto",
-        maxWidth: 200,
-        opacity: 0.75,
-        display: "block",
+        width: LOGO_W,
+        height: LOGO_H,
         flexShrink: 0,
-        userSelect: "none",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
-      loading="lazy"
-      draggable={false}
-    />
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        style={{
+          maxWidth: LOGO_W,
+          maxHeight: LOGO_H,
+          width: "auto",
+          height: "auto",
+          objectFit: "contain",
+          opacity: 0.75,
+          display: "block",
+          userSelect: "none",
+        }}
+        loading="lazy"
+        draggable={false}
+      />
+    </div>
   );
 }
 
