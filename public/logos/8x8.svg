@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 72">
-  <!-- Large "8" left -->
-  <text x="0" y="68" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="72" fill="#EE3124">8</text>
-  <!-- Smaller lowercase "x" vertically centered -->
-  <text x="84" y="60" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="46" fill="#EE3124">x</text>
-  <!-- Large "8" right -->
-  <text x="138" y="68" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="72" fill="#EE3124">8</text>
-</svg>

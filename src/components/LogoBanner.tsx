@@ -1,44 +1,31 @@
 "use client";
 
-type Logo = {
-  alt: string;
-  src: string;
-};
-
-/*
-  Full-color logo ticker. All logos are local SVGs in /public/logos/
-  rendered at a consistent height with slight opacity for the
-  "partner integration" look against the dark background.
-*/
-
-const LOGOS: Logo[] = [
-  { alt: "DebtPayPro",  src: "/logos/debtpaypro.svg" },
-  { alt: "GoHighLevel", src: "/logos/gohighlevel.svg" },
-  { alt: "HubSpot",     src: "/logos/hubspot.svg" },
-  { alt: "Salesforce",  src: "/logos/salesforce.svg" },
-  { alt: "Convoso",     src: "/logos/convoso.svg" },
-  { alt: "TCN",         src: "/logos/tcn.svg" },
-  { alt: "CallTools",   src: "/logos/calltools.svg" },
-  { alt: "Kixie",       src: "/logos/kixie.svg" },
-  { alt: "Five9",       src: "/logos/five9.svg" },
-  { alt: "8x8",         src: "/logos/8x8.svg" },
-  { alt: "Forth",       src: "/logos/forth.svg" },
+const LOGOS = [
+  { alt: "8x8",         src: "/logos/8x8-logo.svg.png" },
+  { alt: "Convoso",     src: "/logos/convoso-logo.png" },
+  { alt: "DebtPayPro",  src: "/logos/debtpaypro-logo.png" },
+  { alt: "Forth",       src: "/logos/forth-logo.png" },
+  { alt: "HighLevel",   src: "/logos/highlevel-logo.png" },
+  { alt: "HubSpot",     src: "/logos/hubspot-logo.png" },
+  { alt: "Kixie",       src: "/logos/kixie-logo.png" },
+  { alt: "Salesforce",  src: "/logos/salesforce-logo.svg.png" },
+  { alt: "TCN",         src: "/logos/tcn-logo.png" },
 ];
 
 const LOGO_HEIGHT = 32; // px — uniform height for all logos
 
-function LogoItem({ logo }: { logo: Logo }) {
+function LogoItem({ alt, src }: { alt: string; src: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={logo.src}
-      alt={logo.alt}
+      src={src}
+      alt={alt}
       height={LOGO_HEIGHT}
       style={{
         height: LOGO_HEIGHT,
         width: "auto",
-        maxWidth: 220,
-        opacity: 0.65,
+        maxWidth: 200,
+        opacity: 0.75,
         display: "block",
         flexShrink: 0,
         userSelect: "none",
@@ -50,8 +37,8 @@ function LogoItem({ logo }: { logo: Logo }) {
 }
 
 export default function LogoBanner() {
-  // Duplicate set creates the seamless loop:
-  // The track is 200% wide; animation moves it -50% (= one full set).
+  // Duplicate the set twice for the seamless infinite scroll:
+  // The track is 200% wide; the animation shifts it -50% (one full set).
   const set = [...LOGOS, ...LOGOS];
 
   return (
@@ -80,7 +67,7 @@ export default function LogoBanner() {
           style={{ gap: 72, width: "max-content" }}
         >
           {set.map((logo, i) => (
-            <LogoItem key={i} logo={logo} />
+            <LogoItem key={i} alt={logo.alt} src={logo.src} />
           ))}
         </div>
       </div>
