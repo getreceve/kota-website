@@ -12,40 +12,28 @@ const LOGOS = [
   { alt: "TCN",         src: "/logos/tcn-logo.png" },
 ];
 
-// Fixed container dimensions — every logo is letterboxed to the same box
-const LOGO_W = 96;  // px wide
-const LOGO_H = 36;  // px tall
+// Every logo renders at exactly this height; width scales proportionally.
+// This guarantees equal visual weight regardless of each logo's aspect ratio.
+const LOGO_H = 40; // px
 
 function LogoItem({ alt, src }: { alt: string; src: string }) {
   return (
-    <div
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
       style={{
-        width: LOGO_W,
         height: LOGO_H,
+        width: "auto",
+        maxWidth: 200,
+        opacity: 0.75,
+        display: "block",
         flexShrink: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        userSelect: "none",
       }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        style={{
-          maxWidth: LOGO_W,
-          maxHeight: LOGO_H,
-          width: "auto",
-          height: "auto",
-          objectFit: "contain",
-          opacity: 0.75,
-          display: "block",
-          userSelect: "none",
-        }}
-        loading="lazy"
-        draggable={false}
-      />
-    </div>
+      loading="lazy"
+      draggable={false}
+    />
   );
 }
 
