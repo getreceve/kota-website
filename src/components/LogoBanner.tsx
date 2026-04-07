@@ -20,7 +20,7 @@ const LOGOS: { alt: string; src: string; height?: number }[] = [
   { alt: "Salesforce",   src: "/logos/salesforce-logo.svg.png" },
   { alt: "TCN",          src: "/logos/tcn-logo.png" },
   { alt: "Ytel",         src: "/logos/ytel-logo.png" },
-  { alt: "Zoho",         src: "/logos/zoho-logo.png",         height: 56 },
+  { alt: "Zoho",         src: "/logos/zoho-logo.png",         height: 80 },
 ];
 
 function LogoItem({ alt, src, height }: { alt: string; src: string; height?: number }) {
