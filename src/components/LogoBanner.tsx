@@ -1,7 +1,7 @@
 "use client";
 
 // Uniform height for every logo — no per-logo overrides
-const LOGO_H = 28;
+const LOGO_H = 32;
 
 const LOGOS = [
   { alt: "8x8",          src: "/logos/8x8-logo.svg.png" },
@@ -37,7 +37,7 @@ function LogoItem({ alt, src }: { alt: string; src: string }) {
         flexShrink: 0,
         userSelect: "none",
       }}
-      loading="lazy"
+      loading="eager"
       draggable={false}
     />
   );
