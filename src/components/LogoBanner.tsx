@@ -68,14 +68,16 @@ export default function LogoBanner() {
       </p>
 
       {/* ticker-mask: edge fade — ticker-track: animation + hover pause (globals.css) */}
-      <div className="ticker-mask overflow-hidden w-full">
-        <div
-          className="ticker-track flex items-center"
-          style={{ gap: 64, width: "max-content" }}
-        >
-          {set.map((logo, i) => (
-            <LogoItem key={i} alt={logo.alt} src={logo.src} height={logo.height} />
-          ))}
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="ticker-mask overflow-hidden">
+          <div
+            className="ticker-track flex items-center"
+            style={{ gap: 64, width: "max-content" }}
+          >
+            {set.map((logo, i) => (
+              <LogoItem key={i} alt={logo.alt} src={logo.src} height={logo.height} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
