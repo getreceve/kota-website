@@ -42,9 +42,9 @@ function GreenCheck() {
   );
 }
 
-function GrayCheck() {
+function MintCheck() {
   return (
-    <svg width="16" height="16" fill="none" stroke="#A0A0A0" viewBox="0 0 24 24"
+    <svg width="16" height="16" fill="none" stroke="#34d399" viewBox="0 0 24 24"
       style={{ flexShrink: 0, marginTop: 2 }}>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
     </svg>
@@ -97,29 +97,13 @@ export default function PricingPage() {
           {/* Team */}
           <div className="reveal" style={{
             background: "#0E0E0E",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid rgba(16,185,129,0.3)",
             borderRadius: 16,
             padding: "32px 28px",
-            boxShadow: "0 4px 32px rgba(0,0,0,0.5)",
+            boxShadow: "0 0 40px rgba(16,185,129,0.06), 0 1px 3px rgba(0,0,0,0.4)",
             display: "flex",
             flexDirection: "column",
           }}>
-            <div style={{ marginBottom: 20 }}>
-              <span style={{
-                display: "inline-flex",
-                alignItems: "center",
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "#A0A0A0",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                borderRadius: 999,
-                padding: "4px 12px",
-              }}>Team</span>
-            </div>
-
             <h2 style={{ fontSize: 26, fontWeight: 800, color: "#fff", marginBottom: 6, letterSpacing: "-0.01em" }}>
               Team
             </h2>
@@ -138,33 +122,33 @@ export default function PricingPage() {
               gap: 8,
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <svg width="14" height="14" fill="none" stroke="#A0A0A0" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="#10B981" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span style={{ color: "#C0C0C0", fontSize: 13 }}>6 – 20 reps</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <svg width="14" height="14" fill="none" stroke="#A0A0A0" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="#10B981" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span style={{ color: "#C0C0C0", fontSize: 13 }}>Monthly or annual billing available</span>
               </div>
             </div>
 
-            <p style={{ color: "#A0A0A0", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
+            <p style={{ color: "#10B981", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
               Everything you need to close more accounts
             </p>
 
             <ul style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28, flexGrow: 1 }}>
               {teamFeatures.map((f) => (
                 <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <GrayCheck />
+                  <GreenCheck />
                   <span style={{ color: "#C0C0C0", fontSize: 14, lineHeight: 1.5 }}>{f}</span>
                 </li>
               ))}
             </ul>
 
-            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="pricing-btn-secondary">
+            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="pricing-btn-primary">
               Book a Demo
             </a>
             <p style={{ textAlign: "center", color: "#555", fontSize: 12 }}>
@@ -174,30 +158,14 @@ export default function PricingPage() {
 
           {/* Command */}
           <div className="reveal" style={{
-            background: "#111111",
-            border: "1px solid rgba(16,185,129,0.35)",
+            background: "#0E0E0E",
+            border: "1px solid rgba(52,211,153,0.35)",
             borderRadius: 16,
             padding: "32px 28px",
-            boxShadow: "0 0 48px rgba(16,185,129,0.07), 0 1px 3px rgba(0,0,0,0.4)",
+            boxShadow: "0 0 40px rgba(52,211,153,0.07), 0 1px 3px rgba(0,0,0,0.4)",
             display: "flex",
             flexDirection: "column",
           }}>
-            <div style={{ marginBottom: 20 }}>
-              <span style={{
-                display: "inline-flex",
-                alignItems: "center",
-                background: "rgba(16,185,129,0.12)",
-                border: "1px solid rgba(16,185,129,0.3)",
-                color: "#10B981",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                borderRadius: 999,
-                padding: "4px 12px",
-              }}>Most Popular</span>
-            </div>
-
             <h2 style={{ fontSize: 26, fontWeight: 800, color: "#fff", marginBottom: 6, letterSpacing: "-0.01em" }}>
               Command
             </h2>
@@ -216,33 +184,33 @@ export default function PricingPage() {
               gap: 8,
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <svg width="14" height="14" fill="none" stroke="#10B981" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="#34d399" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span style={{ color: "#C0C0C0", fontSize: 13 }}>20+ reps</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <svg width="14" height="14" fill="none" stroke="#10B981" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="#34d399" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span style={{ color: "#C0C0C0", fontSize: 13 }}>Monthly or annual billing available</span>
               </div>
             </div>
 
-            <p style={{ color: "#10B981", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
+            <p style={{ color: "#34d399", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
               Everything in Team, plus
             </p>
 
             <ul style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28, flexGrow: 1 }}>
               {commandFeatures.map((f) => (
                 <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <GreenCheck />
+                  <MintCheck />
                   <span style={{ color: "#C0C0C0", fontSize: 14, lineHeight: 1.5 }}>{f}</span>
                 </li>
               ))}
             </ul>
 
-            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="pricing-btn-primary">
+            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="pricing-btn-mint">
               Book a Demo
             </a>
             <p style={{ textAlign: "center", color: "#555", fontSize: 12 }}>
