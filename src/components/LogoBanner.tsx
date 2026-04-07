@@ -9,7 +9,7 @@ const LOGOS: { alt: string; src: string; height?: number }[] = [
   { alt: "Aircall",      src: "/logos/aircall-logo.png" },
   { alt: "Convoso",      src: "/logos/convoso-logo.png" },
   { alt: "DebtPayPro",   src: "/logos/debtpaypro-logo.png" },
-  { alt: "Forth",        src: "/logos/forth-logo.png",        height: 72 },
+  { alt: "Forth",        src: "/logos/forth-logo.png" },
   { alt: "HighLevel",    src: "/logos/highlevel-logo.png",    height: 72 },
   { alt: "HubSpot",      src: "/logos/hubspot-logo.png" },
   { alt: "Kixie",        src: "/logos/kixie-logo.png" },
