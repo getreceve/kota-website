@@ -68,7 +68,7 @@ export default function LogoBanner() {
       </p>
 
       {/* ticker-mask: edge fade — ticker-track: animation + hover pause (globals.css) */}
-      <div className="ticker-mask overflow-hidden">
+      <div className="ticker-mask overflow-hidden" style={{ width: "100%" }}>
         <div
           className="ticker-track flex items-center"
           style={{ gap: 64, width: "max-content" }}
