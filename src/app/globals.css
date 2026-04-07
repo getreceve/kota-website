@@ -310,3 +310,17 @@ body {
     transparent 100%
   );
 }
+
+/* ─── Legal page back link ───────────────────────────── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #10B981;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+.back-link:hover { opacity: 0.7; }
