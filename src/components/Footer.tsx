@@ -29,7 +29,7 @@ const columns = [
     heading: "Company",
     links: [
       { label: "About",   href: "#" },
-      { label: "Contact", href: "mailto:hello@getkota.ai" },
+      { label: "Contact", href: "mailto:info@getkota.ai" },
     ],
   },
   {
