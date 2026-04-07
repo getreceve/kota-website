@@ -32,7 +32,7 @@ function LogoItem({ alt, src, height }: { alt: string; src: string; height?: num
       style={{
         height: height ?? LOGO_H,
         width: "auto",
-        maxWidth: 160,
+        maxWidth: 300,
         filter: "brightness(0) invert(1)",
         opacity: 0.5,
         display: "block",
