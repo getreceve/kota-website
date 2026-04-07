@@ -311,6 +311,42 @@ body {
   );
 }
 
+/* ─── Pricing page CTA buttons ──────────────────────── */
+.pricing-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #10B981, #065F46);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  margin-bottom: 10px;
+}
+.pricing-btn-primary:hover { opacity: 0.85; }
+
+.pricing-btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  margin-bottom: 10px;
+}
+.pricing-btn-secondary:hover { background: rgba(255,255,255,0.11); }
+
 /* ─── Legal page back link ───────────────────────────── */
 .back-link {
   display: inline-flex;

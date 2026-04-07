@@ -22,6 +22,7 @@ const centerLinks = [
   { label: "Why Kota",    href: "#problem" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Features",    href: "#features" },
+  { label: "Pricing",     href: "/pricing" },
 ];
 
 export default function Nav() {
