@@ -287,7 +287,7 @@ body {
   100% { transform: translateX(-50%); }
 }
 .ticker-track {
-  animation: ticker-scroll 32s linear infinite;
+  animation: ticker-scroll 55s linear infinite;
   will-change: transform;
 }
 .ticker-track:hover {
