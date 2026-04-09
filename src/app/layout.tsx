@@ -10,18 +10,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Kota — Your Sales Team's Unfair Advantage",
+  title: "Kota | Sales Intelligence for Debt Settlement Teams",
   description:
-    "Kota analyzes every call, indexes every objection and rebuttal, and gives your entire debt settlement team access to what your best rep already knows. Stop leaving enrollable accounts on the table.",
+    "Kota analyzes every call, indexes every objection, and gives your entire debt settlement sales team access to what your top closer already knows. Stop leaving enrollable accounts on the table.",
   metadataBase: new URL("https://getkota.ai"),
   icons: {
     icon: "/brand logos/KOTA-LOGO-RGB_01-ICON.svg",
     apple: "/brand logos/KOTA-LOGO-RGB_01-ICON.svg",
   },
   openGraph: {
-    title: "Kota — Your Sales Team's Unfair Advantage",
+    title: "Kota | Sales Intelligence for Debt Settlement Teams",
     description:
-      "Stop leaving enrollable accounts on the table. Kota turns every call into competitive intelligence for your whole team.",
+      "Kota analyzes every call, indexes every objection, and gives your entire debt settlement sales team access to what your top closer already knows. Stop leaving enrollable accounts on the table.",
     url: "https://getkota.ai",
     siteName: "Kota",
     locale: "en_US",
@@ -29,8 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kota — Your Sales Team's Unfair Advantage",
-    description: "Stop leaving enrollable accounts on the table.",
+    title: "Kota | Sales Intelligence for Debt Settlement Teams",
+    description:
+      "Kota analyzes every call, indexes every objection, and gives your entire debt settlement sales team access to what your top closer already knows. Stop leaving enrollable accounts on the table.",
   },
 };
 
