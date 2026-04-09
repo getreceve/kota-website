@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description:
     "Kota analyzes every call, indexes every objection and rebuttal, and gives your entire debt settlement team access to what your best rep already knows. Stop leaving enrollable accounts on the table.",
   metadataBase: new URL("https://getkota.ai"),
+  icons: {
+    icon: "/brand logos/KOTA-LOGO-RGB_01-ICON.svg",
+    apple: "/brand logos/KOTA-LOGO-RGB_01-ICON.svg",
+  },
   openGraph: {
     title: "Kota — Your Sales Team's Unfair Advantage",
     description:

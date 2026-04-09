@@ -3,18 +3,14 @@
 import { useEffect, useState } from "react";
 import { DEMO_URL, APP_URL } from "@/lib/constants";
 
-const DiamondLogo = ({ id }: { id: string }) => (
-  <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
-    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L22 12L12 22L2 12L12 2Z" fill={`url(#${id})`} />
-      <defs>
-        <linearGradient id={id} x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#10B981" />
-          <stop offset="1" stopColor="#065F46" />
-        </linearGradient>
-      </defs>
-    </svg>
-    <span className="text-white font-bold text-[18px] tracking-tight">Kota</span>
+const DiamondLogo = ({ id: _ }: { id: string }) => (
+  <a href="/" className="flex items-center flex-shrink-0">
+    <img
+      src="/brand logos/KOTA-LOGO-RGB_01-HORIZONTAL-INV.svg"
+      alt="Kota"
+      height={32}
+      style={{ height: 32, width: "auto" }}
+    />
   </a>
 );
 

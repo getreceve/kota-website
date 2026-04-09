@@ -3,18 +3,11 @@
 import { DEMO_URL } from "@/lib/constants";
 
 const Logo = () => (
-  <div className="flex items-center gap-2.5">
-    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L22 12L12 22L2 12L12 2Z" fill="url(#footer-grad)" />
-      <defs>
-        <linearGradient id="footer-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#10B981" />
-          <stop offset="1" stopColor="#065F46" />
-        </linearGradient>
-      </defs>
-    </svg>
-    <span className="text-white font-bold text-lg tracking-tight">Kota</span>
-  </div>
+  <img
+    src="/brand logos/KOTA-LOGO-RGB_01-HORIZONTAL-INV.svg"
+    alt="Kota"
+    style={{ height: 28, width: "auto" }}
+  />
 );
 
 const columns = [
@@ -60,7 +53,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <a href="#"><Logo /></a>
+            <a href="/"><Logo /></a>
             <p className="mt-3 text-xs leading-relaxed" style={{ color: "#555", maxWidth: 200 }}>
               Your Sales Team&apos;s Unfair Advantage
             </p>
