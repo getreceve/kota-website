@@ -3,6 +3,7 @@
 import { DEMO_URL } from "@/lib/constants";
 
 const Logo = () => (
+  // eslint-disable-next-line @next/next/no-img-element
   <img
     src="/brand logos/KOTA-LOGO-RGB_01-HORIZONTAL-INV.svg"
     alt="Kota"

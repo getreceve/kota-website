@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { DEMO_URL, APP_URL } from "@/lib/constants";
 
-const DiamondLogo = ({ id: _ }: { id: string }) => (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const DiamondLogo = ({ id }: { id: string }) => (
   <a href="/" className="flex items-center flex-shrink-0">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
     <img
       src="/brand logos/KOTA-LOGO-RGB_01-HORIZONTAL-INV.svg"
       alt="Kota"
-      height={32}
       style={{ height: 32, width: "auto" }}
     />
   </a>
