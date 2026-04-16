@@ -77,7 +77,7 @@ export default function Pricing() {
 
           {/* Pro */}
           <div
-            className="card card-glow p-8 relative overflow-hidden reveal-scale stagger-2"
+            className="card card-glow card-glow-animate p-8 relative overflow-hidden reveal-scale stagger-2"
           >
             {/* Top glow line */}
             <div

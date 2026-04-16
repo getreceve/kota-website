@@ -32,8 +32,9 @@ const problems = [
 
 export default function Problem() {
   return (
-    <section id="problem" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <section id="problem" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
+      <div className="dot-grid absolute inset-0" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mb-10 sm:mb-14 reveal">
           <p className="section-label mb-3 sm:mb-4">The Problem</p>

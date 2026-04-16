@@ -35,6 +35,13 @@ function StatPill({
   );
 }
 
+/* Helper: wrap each word in a span with staggered delay */
+function WordSpan({ word, delay }: { word: string; delay: number }) {
+  return (
+    <span className={`hero-word hero-word-d${delay}`}>{word}</span>
+  );
+}
+
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
 
@@ -43,8 +50,8 @@ export default function Hero() {
     return () => clearTimeout(t);
   }, []);
 
-  const cls = (delay: number) =>
-    `hero-line ${loaded ? "loaded" : ""} hero-delay-${delay}`;
+  const cls = (key: string) =>
+    `hero-line ${loaded ? "loaded" : ""} hero-delay-${key}`;
 
   return (
     <section
@@ -52,16 +59,16 @@ export default function Hero() {
       className="relative hero-bg noise overflow-hidden"
       style={{ paddingTop: 64 }}
     >
-      {/* Ambient radial — scaled back on mobile */}
+      {/* Pulsing ambient radial orb */}
       <div
-        className="absolute pointer-events-none"
+        className="hero-orb-pulse absolute pointer-events-none"
         style={{
-          top: "10%",
-          left: "-5%",
-          width: "min(560px, 90vw)",
-          height: 400,
+          top: "8%",
+          left: "-8%",
+          width: "min(620px, 95vw)",
+          height: 440,
           borderRadius: "50%",
-          background: "radial-gradient(ellipse, rgba(16,185,129,0.11) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(16,185,129,0.10) 0%, transparent 68%)",
           filter: "blur(40px)",
         }}
       />
@@ -72,7 +79,7 @@ export default function Hero() {
         <div className="flex-1 w-full lg:max-w-xl">
 
           {/* Eyebrow pill */}
-          <div className={cls(0)}>
+          <div className={cls("0")}>
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 sm:mb-7"
               style={{
@@ -87,20 +94,41 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Headline */}
+          {/* Headline — word-by-word animation, 80 ms stagger */}
           <h1
-            className="font-extrabold text-white leading-[1.04] tracking-tight mb-5 sm:mb-6"
+            className="font-extrabold text-white leading-[1.06] tracking-tight mb-5 sm:mb-6"
             style={{ fontSize: "clamp(34px, 7vw, 60px)" }}
           >
-            <span className={`block ${cls(1)}`}>Your Top Closer</span>
-            <span className={`block ${cls(2)}`}>Has A System.</span>
-            <span className={`block gradient-text ${cls(3)}`}>Now Your Whole</span>
-            <span className={`block gradient-text ${cls(3)}`}>Team Can Use It.</span>
+            {/* Line 1: "Your Top Closer" */}
+            <span className="block" style={{ marginBottom: "0.05em" }}>
+              <WordSpan word="Your" delay={0} />{" "}
+              <WordSpan word="Top" delay={1} />{" "}
+              <WordSpan word="Closer" delay={2} />
+            </span>
+            {/* Line 2: "Has A System." */}
+            <span className="block" style={{ marginBottom: "0.05em" }}>
+              <WordSpan word="Has" delay={3} />{" "}
+              <WordSpan word="A" delay={4} />{" "}
+              <WordSpan word="System." delay={5} />
+            </span>
+            {/* Line 3: "Now Your Whole" — gradient */}
+            <span className="block gradient-text" style={{ marginBottom: "0.05em" }}>
+              <WordSpan word="Now" delay={6} />{" "}
+              <WordSpan word="Your" delay={7} />{" "}
+              <WordSpan word="Whole" delay={8} />
+            </span>
+            {/* Line 4: "Team Can Use It." — gradient */}
+            <span className="block gradient-text">
+              <WordSpan word="Team" delay={9} />{" "}
+              <WordSpan word="Can" delay={10} />{" "}
+              <WordSpan word="Use" delay={11} />{" "}
+              <WordSpan word="It." delay={12} />
+            </span>
           </h1>
 
-          {/* Subheadline */}
+          {/* Subheadline — fades in after words complete */}
           <p
-            className={`text-[#A0A0A0] leading-relaxed mb-7 sm:mb-9 text-sm sm:text-base lg:text-[17px] ${cls(4)}`}
+            className={`text-[#A0A0A0] leading-relaxed mb-7 sm:mb-9 text-sm sm:text-base lg:text-[17px] ${cls("sub")}`}
             style={{ maxWidth: 480 }}
           >
             Kota analyzes every call, indexes every objection and rebuttal, and
@@ -112,7 +140,7 @@ export default function Hero() {
           </p>
 
           {/* Sales OS secondary line */}
-          <p className={`text-xs sm:text-sm mb-7 sm:mb-9 -mt-5 sm:-mt-6 ${cls(4)}`} style={{ color: "#606060", maxWidth: 440 }}>
+          <p className={`text-xs sm:text-sm mb-7 sm:mb-9 -mt-5 sm:-mt-6 ${cls("sub")}`} style={{ color: "#606060", maxWidth: 440 }}>
             Part of the{" "}
             <a href="/sales-os" style={{ color: "#10B981", textDecoration: "underline", textUnderlineOffset: 3 }}>
               Kota Sales OS
@@ -121,7 +149,7 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className={`flex flex-wrap gap-3 mb-8 sm:mb-10 ${cls(5)}`}>
+          <div className={`flex flex-wrap gap-3 mb-8 sm:mb-10 ${cls("cta")}`}>
             <a
               href={DEMO_URL}
               target="_blank"
@@ -138,16 +166,26 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Stats — stack vertically on mobile, row on sm+ */}
-          <div className={`flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3 ${cls(5)}`}>
+          {/* Stats */}
+          <div className={`flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3 ${cls("cta")}`}>
             <StatPill value={10000} suffix="+"  label="Calls Analyzed" />
             <StatPill value={43}    suffix="%"  label="Avg Improvement in Objection Overcome Rate" />
             <StatPill value={5}     suffix=" Days" label="to Full Onboarding" />
           </div>
+
+          {/* Scroll indicator */}
+          <div className={`mt-8 sm:mt-10 flex justify-start ${cls("scroll")}`}>
+            <div className="hero-scroll-indicator flex flex-col items-center gap-1.5">
+              <span className="text-[10px] tracking-widest uppercase" style={{ color: "#444" }}>Scroll</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "#444" }}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* ── Right column — browser mockup ── */}
-        <div className={`flex-1 w-full min-w-0 ${cls(2)}`}>
+        <div className={`flex-1 w-full min-w-0 ${cls("2")}`}>
           <BrowserMockup />
         </div>
       </div>

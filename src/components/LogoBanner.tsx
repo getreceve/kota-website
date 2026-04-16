@@ -61,7 +61,7 @@ export default function LogoBanner() {
       }}
     >
       <p
-        className="text-center section-label mb-5 sm:mb-6 px-4"
+        className="reveal text-center section-label mb-5 sm:mb-6 px-4"
         style={{ color: "rgba(16,185,129,0.6)" }}
       >
         Works With Your Existing Stack

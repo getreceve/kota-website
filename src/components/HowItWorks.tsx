@@ -35,8 +35,9 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
+      <div className="dot-grid absolute inset-0" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 reveal">
@@ -52,9 +53,9 @@ export default function HowItWorks() {
         {/* Steps — stacked on mobile, horizontal on lg+ */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-6 relative">
 
-          {/* Connecting line — desktop only */}
+          {/* Connecting line — desktop only, draws left→right on scroll */}
           <div
-            className="hidden lg:block absolute z-0 h-px"
+            className="hidden lg:block absolute z-0 h-px reveal-draw-x"
             style={{
               top: "40px",
               left: "calc(16.667% + 40px)",
@@ -63,9 +64,9 @@ export default function HowItWorks() {
             }}
           />
 
-          {/* Mobile vertical connector */}
+          {/* Mobile vertical connector — draws top→bottom on scroll */}
           <div
-            className="lg:hidden absolute left-[39px] z-0"
+            className="lg:hidden absolute left-[39px] z-0 reveal-draw-y"
             style={{
               top: 80,
               bottom: 80,
@@ -79,10 +80,10 @@ export default function HowItWorks() {
               key={i}
               className={`flex flex-col lg:items-center lg:text-center reveal stagger-${i + 1} relative z-10`}
             >
-              {/* Step circle */}
+              {/* Step circle — step-num-circle gets a one-shot pulse via CSS when .visible is added */}
               <div className="relative mb-5 sm:mb-7 flex-shrink-0 self-start lg:self-auto">
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center"
+                  className="step-num-circle w-20 h-20 rounded-full flex items-center justify-center"
                   style={{
                     background: "rgba(16,185,129,0.08)",
                     border: "1px solid rgba(16,185,129,0.3)",

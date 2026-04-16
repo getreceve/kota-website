@@ -54,7 +54,8 @@ export default function PricingPage() {
       <ScrollReveal />
       <Nav />
 
-      <main style={{ background: "#0A0A0A", minHeight: "100vh", paddingTop: 100, paddingBottom: 80 }}>
+      <main className="relative" style={{ background: "#0A0A0A", minHeight: "100vh", paddingTop: 100, paddingBottom: 80 }}>
+        <div className="dot-grid absolute inset-0 pointer-events-none" />
 
         {/* ── Header ── */}
         <div className="text-center px-5 mb-14 reveal">
@@ -92,7 +93,7 @@ export default function PricingPage() {
         }}>
 
           {/* Team */}
-          <div className="reveal" style={{
+          <div className="reveal-scale stagger-1" style={{
             background: "#0E0E0E",
             border: "1px solid rgba(16,185,129,0.3)",
             borderRadius: 16,
@@ -154,12 +155,11 @@ export default function PricingPage() {
           </div>
 
           {/* Command */}
-          <div className="reveal" style={{
+          <div className="reveal-scale stagger-2 card-glow-animate" style={{
             background: "#0E0E0E",
             border: "1px solid rgba(16,185,129,0.3)",
             borderRadius: 16,
             padding: "32px 28px",
-            boxShadow: "0 0 40px rgba(16,185,129,0.06), 0 1px 3px rgba(0,0,0,0.4)",
             display: "flex",
             flexDirection: "column",
           }}>

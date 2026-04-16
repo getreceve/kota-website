@@ -65,8 +65,9 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <section id="features" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
+      <div className="dot-grid absolute inset-0" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14 reveal">
@@ -90,7 +91,7 @@ export default function Features() {
             >
               {f.badge && (
                 <div
-                  className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-xs font-semibold"
+                  className="badge-coming-soon absolute top-4 right-4 px-2.5 py-1 rounded-full text-xs font-semibold"
                   style={{
                     background: "rgba(16,185,129,0.1)",
                     border: "1px solid rgba(16,185,129,0.3)",

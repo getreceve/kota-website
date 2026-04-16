@@ -277,7 +277,7 @@ export default function SalesOSPage() {
 
         <div className="relative max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 py-24 text-center w-full">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-7"
+          <div className="about-word about-word-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-7"
             style={{ background: "rgba(16,185,129,0.08)", border: "1px solid rgba(16,185,129,0.25)" }}>
             <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#10B981" }} />
             <span className="text-xs font-semibold tracking-wide" style={{ color: "#10B981" }}>
@@ -285,18 +285,19 @@ export default function SalesOSPage() {
             </span>
           </div>
 
-          {/* Headline */}
+          {/* Headline — word-by-word animation reusing about-word classes */}
           <h1
             className="font-extrabold text-white leading-[1.05] tracking-tight mb-6"
             style={{ fontSize: "clamp(32px, 6vw, 72px)" }}
           >
-            The Complete AI Operating System<br />
-            <span className="gradient-text">for Debt Settlement Sales</span>
+            <span className="about-word about-word-1">The Complete AI Operating System</span>
+            <br />
+            <span className="about-word about-word-2 gradient-text">for Debt Settlement Sales</span>
           </h1>
 
           {/* Subheadline */}
           <p
-            className="mx-auto mb-10"
+            className="about-sub mx-auto mb-10"
             style={{ color: "#A0A0A0", fontSize: "clamp(16px, 2vw, 20px)", maxWidth: 620, lineHeight: 1.65 }}
           >
             Five integrated systems that automate every stage of your sales operation.
@@ -304,7 +305,7 @@ export default function SalesOSPage() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
+          <div className="about-sub flex flex-wrap items-center justify-center gap-4 mb-10">
             <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Book a Demo
               <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -314,11 +315,11 @@ export default function SalesOSPage() {
             <a href="/pricing" className="btn-ghost">See Pricing</a>
           </div>
 
-          {/* Stat pills */}
+          {/* Stat pills — staggered */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            {["5 Integrated Systems", "Full CRM & Dialer Integration", "Built for Debt Settlement"].map((s) => (
+            {["5 Integrated Systems", "Full CRM & Dialer Integration", "Built for Debt Settlement"].map((s, i) => (
               <div key={s}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm"
+                className={`about-word about-word-${i + 3} flex items-center gap-2 px-4 py-2 rounded-xl text-sm`}
                 style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "#A0A0A0" }}>
                 <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#10B981" }} />
                 {s}
@@ -329,8 +330,9 @@ export default function SalesOSPage() {
       </section>
 
       {/* ══ THE FIVE SYSTEMS ══════════════════════════════ */}
-      <section className="py-20 sm:py-32" style={{ background: "#0A0A0A" }}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+      <section className="relative py-20 sm:py-32" style={{ background: "#0A0A0A" }}>
+        <div className="dot-grid absolute inset-0" />
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
           {/* Header */}
           <div className="text-center mb-16 reveal">
@@ -479,7 +481,7 @@ export default function SalesOSPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {testimonials.map((t, i) => (
-              <div key={i} className={`card p-6 flex flex-col reveal stagger-${i + 1}`}>
+              <div key={i} className={`card p-6 flex flex-col ${i === 0 ? "reveal-left" : i === 1 ? "reveal" : "reveal-right"} stagger-${i + 1}`}>
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-4">
                   {[...Array(5)].map((_, j) => (
@@ -517,6 +519,15 @@ export default function SalesOSPage() {
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(16,185,129,0.08) 0%, transparent 70%)",
         }} />
+
+        {/* Abstract arc decoration */}
+        <svg className="absolute pointer-events-none hidden sm:block" aria-hidden="true"
+          style={{ top: "-12%", right: "-6%", width: "45%", maxWidth: 480, opacity: 0.06 }}
+          viewBox="0 0 500 500" fill="none">
+          <circle cx="300" cy="200" r="240" stroke="#10B981" strokeWidth="1.5" />
+          <circle cx="300" cy="200" r="160" stroke="#34d399" strokeWidth="1" />
+          <line x1="60" y1="200" x2="500" y2="200" stroke="#10B981" strokeWidth="0.75" strokeDasharray="6 8" />
+        </svg>
 
         <div className="relative max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
           <p className="section-label mb-5 reveal" style={{ color: "rgba(16,185,129,0.7)" }}>

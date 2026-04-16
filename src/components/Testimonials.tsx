@@ -29,8 +29,9 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="proof" className="py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <section id="proof" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
+      <div className="dot-grid absolute inset-0" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14 reveal">

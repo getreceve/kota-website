@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const SELECTORS = ".reveal, .reveal-left, .reveal-right, .reveal-scale";
+const SELECTORS = ".reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-draw-x, .reveal-draw-y";
 
 export default function ScrollReveal() {
   useEffect(() => {

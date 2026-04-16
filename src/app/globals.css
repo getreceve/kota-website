@@ -207,7 +207,7 @@ body {
 /* Scroll reveal — scale up (for pricing) */
 .reveal-scale {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.97);
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -556,6 +556,133 @@ body {
 .about-dot-grid {
   background-image: radial-gradient(rgba(16,185,129,0.10) 1px, transparent 1px);
   background-size: 30px 30px;
+}
+
+/* ─── Draw-from-left reveal (connector lines) ────────── */
+.reveal-draw-x {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+.reveal-draw-x.visible {
+  transform: scaleX(1);
+}
+
+/* ─── Draw-from-top reveal (vertical connector) ──────── */
+.reveal-draw-y {
+  transform-origin: top center;
+  transform: scaleY(0);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+.reveal-draw-y.visible {
+  transform: scaleY(1);
+}
+
+/* ─── Global dot grid texture ────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .dot-grid { display: none; }
+}
+
+/* ─── Hero word-by-word animation ───────────────────── */
+@keyframes hero-word-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-word-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+/* 80 ms stagger per word, starting after eyebrow (0.18 s) */
+.hero-word-d0  { animation-delay: 0.18s; }
+.hero-word-d1  { animation-delay: 0.26s; }
+.hero-word-d2  { animation-delay: 0.34s; }
+.hero-word-d3  { animation-delay: 0.42s; }
+.hero-word-d4  { animation-delay: 0.50s; }
+.hero-word-d5  { animation-delay: 0.58s; }
+.hero-word-d6  { animation-delay: 0.66s; }
+.hero-word-d7  { animation-delay: 0.74s; }
+.hero-word-d8  { animation-delay: 0.82s; }
+.hero-word-d9  { animation-delay: 0.90s; }
+.hero-word-d10 { animation-delay: 0.98s; }
+.hero-word-d11 { animation-delay: 1.06s; }
+.hero-word-d12 { animation-delay: 1.14s; }
+
+/* Sub-headline and CTA delays timed after last word completes */
+.hero-delay-sub    { animation-delay: 1.80s; }
+.hero-delay-cta    { animation-delay: 2.00s; }
+.hero-delay-scroll { animation-delay: 2.30s; }
+
+/* ─── Hero pulsing background orb ───────────────────── */
+@keyframes hero-orb-pulse {
+  0%, 100% { opacity: 0.08; transform: scale(1); }
+  50%       { opacity: 0.11; transform: scale(1.1); }
+}
+.hero-orb-pulse {
+  animation: hero-orb-pulse 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ─── Hero scroll indicator ─────────────────────────── */
+@keyframes hero-scroll-bounce {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%       { opacity: 0.65; transform: translateY(7px); }
+}
+.hero-scroll-indicator {
+  opacity: 0;
+  animation: hero-scroll-bounce 2s ease-in-out 2.4s infinite;
+}
+
+/* ─── Step number pulse on entry ─────────────────────── */
+@keyframes step-num-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); }
+  60%  { box-shadow: 0 0 0 14px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 14px rgba(16,185,129,0); }
+}
+.reveal.visible .step-num-circle {
+  animation: step-num-pulse 0.9s ease 0.55s both;
+}
+
+/* ─── Coming Soon badge continuous glow ──────────────── */
+@keyframes badge-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); border-color: rgba(16,185,129,0.3); }
+  50%       { box-shadow: 0 0 10px rgba(16,185,129,0.35); border-color: rgba(16,185,129,0.65); }
+}
+.badge-coming-soon {
+  animation: badge-glow-pulse 2.8s ease-in-out infinite;
+}
+
+/* ─── Recommended card continuous border glow ────────── */
+@keyframes card-border-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(16,185,129,0.2),
+                0 0 28px rgba(16,185,129,0.07),
+                0 16px 48px rgba(0,0,0,0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(16,185,129,0.48),
+                0 0 52px rgba(16,185,129,0.18),
+                0 16px 48px rgba(0,0,0,0.5);
+  }
+}
+.card-glow-animate {
+  animation: card-border-glow-pulse 3.5s ease-in-out infinite;
+}
+
+/* ─── prefers-reduced-motion — disable all animations ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .dot-grid { display: none; }
 }
 
 /* ─── Legal page back link ───────────────────────────── */
