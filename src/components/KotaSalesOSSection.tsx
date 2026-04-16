@@ -68,7 +68,7 @@ export default function KotaSalesOSSection() {
             className="font-extrabold text-white leading-tight mb-4"
             style={{ fontSize: "clamp(28px, 4.5vw, 52px)" }}
           >
-            Kota <span className="gradient-text">Sales OS</span>
+            <span className="gradient-text">Sales OS</span>
           </h2>
           <p style={{ color: "#A0A0A0", fontSize: "clamp(15px, 2vw, 18px)", maxWidth: 620, margin: "0 auto" }}>
             Kota Pipeline Intelligence is just the beginning. The Kota Sales OS is the complete AI operating
