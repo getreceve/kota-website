@@ -111,18 +111,12 @@ export default function Hero() {
               <WordSpan word="A" delay={4} />{" "}
               <WordSpan word="System." delay={5} />
             </span>
-            {/* Line 3: "Now Your Whole" — gradient */}
-            <span className="block gradient-text" style={{ marginBottom: "0.05em" }}>
-              <WordSpan word="Now" delay={6} />{" "}
-              <WordSpan word="Your" delay={7} />{" "}
-              <WordSpan word="Whole" delay={8} />
+            {/* Lines 3–4: gradient — animate as whole lines so background-clip works */}
+            <span className="hero-word hero-word-d6 block gradient-text" style={{ marginBottom: "0.05em" }}>
+              Now Your Whole
             </span>
-            {/* Line 4: "Team Can Use It." — gradient */}
-            <span className="block gradient-text">
-              <WordSpan word="Team" delay={9} />{" "}
-              <WordSpan word="Can" delay={10} />{" "}
-              <WordSpan word="Use" delay={11} />{" "}
-              <WordSpan word="It." delay={12} />
+            <span className="hero-word hero-word-d8 block gradient-text">
+              Team Can Use It.
             </span>
           </h1>
 
