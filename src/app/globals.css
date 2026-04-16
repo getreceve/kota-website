@@ -466,6 +466,98 @@ body {
   transform: translateY(-3px);
 }
 
+/* ─── About page ────────────────────────────────────── */
+
+/* Word-by-word hero animation */
+@keyframes about-word-rise {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.about-word {
+  display: inline-block;
+  opacity: 0;
+  animation: about-word-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.about-word-0 { animation-delay: 0.10s; }
+.about-word-1 { animation-delay: 0.20s; }
+.about-word-2 { animation-delay: 0.30s; }
+.about-word-3 { animation-delay: 0.40s; }
+.about-word-4 { animation-delay: 0.50s; }
+
+/* Animated underline on "Inside" */
+@keyframes about-draw-underline {
+  from { width: 0; opacity: 0; }
+  to   { width: 100%; opacity: 1; }
+}
+.about-underline {
+  position: relative;
+  display: inline-block;
+}
+.about-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #10B981, #34d399);
+  border-radius: 2px;
+  animation: about-draw-underline 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+}
+
+/* Subheadline fades in after headline */
+.about-sub {
+  opacity: 0;
+  animation: about-word-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 1.6s forwards;
+}
+
+/* Scroll indicator */
+@keyframes about-scroll-bounce {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50%       { opacity: 0.75; transform: translateY(7px); }
+}
+.about-scroll-indicator {
+  opacity: 0;
+  animation: about-scroll-bounce 1.8s ease-in-out 2.2s infinite;
+}
+
+/* Growing left border on alternating paragraphs */
+.about-border-left {
+  position: relative;
+  padding-left: 28px;
+}
+.about-border-left::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 0;
+  background: #10B981;
+  border-radius: 1px;
+  transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+.about-border-left.visible::before { height: 100%; }
+
+/* Growing bottom border on pillars */
+.about-pillar {
+  position: relative;
+  overflow: hidden;
+}
+.about-pillar::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px; width: 0;
+  background: linear-gradient(90deg, #10B981, transparent);
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+.about-pillar.visible::after { width: 100%; }
+
+/* Dot grid texture */
+.about-dot-grid {
+  background-image: radial-gradient(rgba(16,185,129,0.10) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
 /* ─── Legal page back link ───────────────────────────── */
 .back-link {
   display: inline-flex;
