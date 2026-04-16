@@ -42,14 +42,6 @@ function GreenCheck() {
   );
 }
 
-function MintCheck() {
-  return (
-    <svg width="16" height="16" fill="none" stroke="#10B981" viewBox="0 0 24 24"
-      style={{ flexShrink: 0, marginTop: 2 }}>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
 
 export default function PricingPage() {
   return (
