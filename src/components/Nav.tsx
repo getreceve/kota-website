@@ -18,6 +18,7 @@ const DiamondLogo = ({ id }: { id: string }) => (
 const centerLinks = [
   { label: "Product",  href: "/" },
   { label: "Sales OS", href: "/sales-os" },
+  { label: "About",    href: "/about" },
   { label: "Pricing",  href: "/pricing" },
 ];
 
