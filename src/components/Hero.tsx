@@ -82,7 +82,7 @@ export default function Hero() {
             >
               <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#10B981" }} />
               <span className="text-[11px] sm:text-xs font-semibold text-emerald-400 tracking-wide">
-                Built for Debt Settlement Sales Teams
+                Kota Pipeline Intelligence
               </span>
             </div>
           </div>
@@ -109,6 +109,15 @@ export default function Hero() {
             <span className="text-white font-medium">
               Stop leaving enrollable accounts on the table.
             </span>
+          </p>
+
+          {/* Sales OS secondary line */}
+          <p className={`text-xs sm:text-sm mb-7 sm:mb-9 -mt-5 sm:-mt-6 ${cls(4)}`} style={{ color: "#606060", maxWidth: 440 }}>
+            Part of the{" "}
+            <a href="/sales-os" style={{ color: "#10B981", textDecoration: "underline", textUnderlineOffset: 3 }}>
+              Kota Sales OS
+            </a>
+            . The complete AI operating system for debt settlement sales.
           </p>
 
           {/* CTAs */}

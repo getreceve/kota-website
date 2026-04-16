@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import LogoBanner from "@/components/LogoBanner";
+import KotaSalesOSSection from "@/components/KotaSalesOSSection";
 import Problem from "@/components/Problem";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
@@ -16,6 +17,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <LogoBanner />
+      <KotaSalesOSSection />
       <Problem />
       <HowItWorks />
       <Features />

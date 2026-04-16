@@ -364,6 +364,108 @@ body {
 }
 .pricing-btn-secondary:hover { background: rgba(255,255,255,0.11); }
 
+/* ─── Stagger delays 7–10 ───────────────────────────── */
+.stagger-7  { transition-delay: 0.56s; }
+.stagger-8  { transition-delay: 0.64s; }
+.stagger-9  { transition-delay: 0.72s; }
+.stagger-10 { transition-delay: 0.80s; }
+@media (max-width: 767px) {
+  .stagger-7  { transition-delay: 0.28s; }
+  .stagger-8  { transition-delay: 0.32s; }
+  .stagger-9  { transition-delay: 0.36s; }
+  .stagger-10 { transition-delay: 0.40s; }
+}
+
+/* ─── Sales OS page ──────────────────────────────────── */
+@keyframes sos-orb-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 0.60; transform: scale(1.12); }
+}
+@keyframes sos-orb-drift {
+  0%   { transform: translate(0px,    0px)   scale(1);    opacity: 0.4; }
+  33%  { transform: translate(40px,  -30px)  scale(1.08); opacity: 0.55; }
+  66%  { transform: translate(-25px,  35px)  scale(0.94); opacity: 0.35; }
+  100% { transform: translate(0px,    0px)   scale(1);    opacity: 0.4; }
+}
+@keyframes sos-orb-drift-2 {
+  0%   { transform: translate(0px,   0px)   scale(1);    opacity: 0.3; }
+  33%  { transform: translate(-35px, 25px)  scale(1.06); opacity: 0.45; }
+  66%  { transform: translate(30px, -40px)  scale(0.92); opacity: 0.3; }
+  100% { transform: translate(0px,   0px)   scale(1);    opacity: 0.3; }
+}
+.sos-orb-1 {
+  animation: sos-orb-drift 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.sos-orb-2 {
+  animation: sos-orb-drift-2 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Flow diagram animated dashes */
+@keyframes flow-dash {
+  to { stroke-dashoffset: -24; }
+}
+.flow-line {
+  stroke-dasharray: 8 6;
+  animation: flow-dash 1.4s linear infinite;
+}
+.flow-line-slow {
+  stroke-dasharray: 8 6;
+  animation: flow-dash 2s linear infinite;
+}
+
+/* Timeline vertical line draw */
+@keyframes timeline-draw {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
+}
+.timeline-line-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.timeline-line-path.visible {
+  stroke-dashoffset: 0;
+}
+
+/* Package card hover glow */
+.sos-pkg-card {
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.sos-pkg-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 0 32px rgba(16,185,129,0.12), 0 16px 48px rgba(0,0,0,0.5);
+  border-color: rgba(16,185,129,0.3);
+}
+.sos-pkg-card-popular {
+  border-color: rgba(16,185,129,0.4) !important;
+  box-shadow: 0 0 40px rgba(16,185,129,0.1), 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* System card on homepage */
+.sos-system-card {
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 24px 20px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sos-system-card:hover {
+  border-color: rgba(16,185,129,0.35);
+  box-shadow: 0 0 24px rgba(16,185,129,0.08), 0 8px 32px rgba(0,0,0,0.35);
+  transform: translateY(-3px);
+}
+
 /* ─── Legal page back link ───────────────────────────── */
 .back-link {
   display: inline-flex;

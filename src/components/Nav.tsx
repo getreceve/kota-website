@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DEMO_URL, APP_URL } from "@/lib/constants";
+import { DEMO_URL } from "@/lib/constants";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DiamondLogo = ({ id }: { id: string }) => (
@@ -16,10 +16,9 @@ const DiamondLogo = ({ id }: { id: string }) => (
 );
 
 const centerLinks = [
-  { label: "Why Kota",    href: "#problem" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Features",    href: "#features" },
-  { label: "Pricing",     href: "/pricing" },
+  { label: "Product",  href: "/" },
+  { label: "Sales OS", href: "/sales-os" },
+  { label: "Pricing",  href: "/pricing" },
 ];
 
 export default function Nav() {
@@ -69,16 +68,6 @@ export default function Nav() {
 
             {/* Right side */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Log In — desktop only */}
-              <a
-                href={APP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden lg:block text-sm font-medium text-[#A0A0A0] hover:text-white transition-colors duration-200"
-              >
-                Log In
-              </a>
-
               {/* Book a Demo — always visible */}
               <a
                 href={DEMO_URL}
@@ -146,17 +135,6 @@ export default function Nav() {
                 </a>
               ))}
 
-              <div className="my-4" style={{ height: 1, background: "rgba(255,255,255,0.07)" }} />
-
-              <a
-                href={APP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeOverlay}
-                className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-[#A0A0A0] hover:text-white hover:bg-white/5 text-base font-medium transition-all"
-              >
-                Log In
-              </a>
             </nav>
 
             {/* Bottom CTA */}
