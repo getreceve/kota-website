@@ -31,6 +31,11 @@ const commandFeatures = [
   "Custom reporting and analytics",
   "SLA and uptime guarantee",
   "Data processing agreement included",
+  "White-glove implementation and data migration",
+  "API access for custom integrations",
+  "Quarterly business reviews and strategy sessions",
+  "Custom AI model training on your call library",
+  "Multi-team and multi-location support",
 ];
 
 function GreenCheck() {
