@@ -174,44 +174,54 @@ function FlowDiagram() {
     </marker>
   );
 
+  // Layout: clean rectangle
+  // Top row:    01(180,140) → 02(420,140) → 03(660,140)
+  // Bottom row: 05(180,320)               04(660,320)
+  // 01↓05 (enrolled), 03↓04 (no sale), 04←05 (reactivated leads re-enter)
+
   return (
     <div style={{ overflowX: "auto", overflowY: "hidden" }}>
-      <svg viewBox="0 0 900 420" width="100%" style={{ display: "block", margin: "0 auto", minWidth: 380 }}>
+      <svg viewBox="0 0 860 460" width="100%" style={{ display: "block", margin: "0 auto", minWidth: 380 }}>
         <defs>
           {arrow("ah1")}{arrow("ah2")}{arrow("ah3")}
           {arrow("ah4")}{arrow("ah5")}{arrow("ah6")}
+          {arrow("ah7")}
         </defs>
 
-        {/* 1 → 2 */}
-        <line x1="242" y1="130" x2="358" y2="130" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.8" markerEnd="url(#ah1)" className="flow-line" />
-        {/* 2 → 3 */}
-        <line x1="442" y1="130" x2="558" y2="130" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.8" markerEnd="url(#ah2)" className="flow-line" />
-        {/* 3 → 4 (non-enrolled) */}
-        <line x1="720" y1="172" x2="720" y2="268" stroke="rgba(16,185,129,0.4)" strokeWidth="1.8" markerEnd="url(#ah3)" className="flow-line-slow" />
-        {/* 1 → 5 (enrolled) */}
-        <line x1="200" y1="172" x2="200" y2="268" stroke="rgba(16,185,129,0.4)" strokeWidth="1.8" markerEnd="url(#ah4)" className="flow-line-slow" />
-        {/* 2 feeds back to 1 (improvement loop) */}
-        <path d="M380 88 Q380 36 200 36 Q200 86 200 88" fill="none" stroke="rgba(16,185,129,0.3)" strokeWidth="1.5" strokeDasharray="7 5" markerEnd="url(#ah5)" className="flow-line-slow" />
-        {/* Live call → 3 */}
-        <line x1="642" y1="130" x2="678" y2="130" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.8" markerEnd="url(#ah6)" className="flow-line" />
+        {/* Top row: 01 → 02 → 03 */}
+        <line x1="222" y1="140" x2="378" y2="140" stroke="#10B981" strokeOpacity="0.55" strokeWidth="1.8" markerEnd="url(#ah1)" className="flow-line" />
+        <line x1="462" y1="140" x2="618" y2="140" stroke="#10B981" strokeOpacity="0.55" strokeWidth="1.8" markerEnd="url(#ah2)" className="flow-line" />
+
+        {/* 01 ↓ 05 (enrolled) */}
+        <line x1="180" y1="182" x2="180" y2="278" stroke="rgba(16,185,129,0.45)" strokeWidth="1.8" markerEnd="url(#ah3)" className="flow-line-slow" />
+
+        {/* 03 ↓ 04 (no sale) */}
+        <line x1="660" y1="182" x2="660" y2="278" stroke="rgba(16,185,129,0.45)" strokeWidth="1.8" markerEnd="url(#ah4)" className="flow-line-slow" />
+
+        {/* 04 → 01 loop (reactivated → back into pipeline) */}
+        <path d="M618 320 Q420 420 222 320" fill="none" stroke="rgba(16,185,129,0.25)" strokeWidth="1.5" strokeDasharray="7 5" markerEnd="url(#ah5)" className="flow-line-slow" />
+
+        {/* Script improvement loop: 02 → back to 01 */}
+        <path d="M400 98 Q400 40 180 40 Q180 96 180 98" fill="none" stroke="rgba(16,185,129,0.28)" strokeWidth="1.5" strokeDasharray="7 5" markerEnd="url(#ah6)" className="flow-line-slow" />
 
         {/* Labels */}
-        <text x="300" y="120" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11">call data</text>
-        <text x="500" y="120" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11">scripts</text>
-        <text x="290" y="36" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize="10">continuous improvement</text>
-        <text x="744" y="226" fill="rgba(255,255,255,0.3)" fontSize="10">no sale</text>
-        <text x="210" y="226" fill="rgba(255,255,255,0.3)" fontSize="10">enrolled</text>
+        <text x="300" y="128" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11">call data</text>
+        <text x="540" y="128" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11">live scripts</text>
+        <text x="290" y="40" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize="10">continuous improvement</text>
+        <text x="156" y="238" textAnchor="end" fill="rgba(255,255,255,0.3)" fontSize="10">enrolled</text>
+        <text x="684" y="238" fill="rgba(255,255,255,0.3)" fontSize="10">no sale</text>
+        <text x="420" y="418" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="10">reactivated → re-enter pipeline</text>
 
         {/* Nodes */}
-        {node("01", "Pipeline", 200, 130)}
-        {node("02", "Scripts", 400, 130)}
-        {node("03", "Live Call", 600, 130)}
-        {node("04", "Reactivate", 720, 310)}
-        {node("05", "Retention", 200, 310)}
+        {node("01", "Pipeline", 180, 140)}
+        {node("02", "Scripts", 420, 140)}
+        {node("03", "Live Call", 660, 140)}
+        {node("04", "Reactivate", 660, 320)}
+        {node("05", "Retention", 180, 320)}
 
         {/* Lead In */}
-        <text x="68" y="134" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="12">Lead In</text>
-        <line x1="100" y1="130" x2="156" y2="130" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeDasharray="5 4" markerEnd="url(#ah1)" />
+        <text x="62" y="144" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="12">Lead In</text>
+        <line x1="94" y1="140" x2="136" y2="140" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeDasharray="5 4" markerEnd="url(#ah7)" />
       </svg>
     </div>
   );
