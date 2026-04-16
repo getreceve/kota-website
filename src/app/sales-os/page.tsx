@@ -120,40 +120,6 @@ const systems = [
   },
 ];
 
-const packages = [
-  {
-    name: "Starter",
-    systems: "System 1",
-    setup: "$3,000 – $8,000",
-    monthly: "$1,500 – $2,500",
-    bestFor: "Teams ready to make their calls smarter",
-    popular: false,
-  },
-  {
-    name: "Growth",
-    systems: "Systems 1 & 2",
-    setup: "$5,000 – $11,000",
-    monthly: "$2,000 – $3,000",
-    bestFor: "Teams ready to optimize their scripts with data",
-    popular: false,
-  },
-  {
-    name: "Performance",
-    systems: "Systems 1, 2 & 3",
-    setup: "$7,000 – $14,000",
-    monthly: "$2,500 – $4,000",
-    bestFor: "Teams who want real-time intelligence during every call",
-    popular: true,
-  },
-  {
-    name: "Full Stack",
-    systems: "All 5 Systems",
-    setup: "$12,000 – $20,000",
-    monthly: "$4,500 – $7,000",
-    bestFor: "Teams who want the complete AI operating system",
-    popular: false,
-  },
-];
 
 const testimonials = [
   {
@@ -195,63 +161,57 @@ function GreenCheck() {
 function FlowDiagram() {
   const node = (num: string, label: string, x: number, y: number) => (
     <g key={num}>
-      <circle cx={x} cy={y} r="28" fill="#111" stroke="rgba(16,185,129,0.4)" strokeWidth="1.5" />
-      <circle cx={x} cy={y} r="20" fill="rgba(16,185,129,0.08)" />
-      <text x={x} y={y - 5} textAnchor="middle" fill="#10B981" fontSize="11" fontWeight="700">{num}</text>
-      <text x={x} y={y + 8} textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">{label}</text>
+      <circle cx={x} cy={y} r="42" fill="#111" stroke="rgba(16,185,129,0.4)" strokeWidth="1.5" />
+      <circle cx={x} cy={y} r="30" fill="rgba(16,185,129,0.08)" />
+      <text x={x} y={y - 6} textAnchor="middle" fill="#10B981" fontSize="14" fontWeight="800">{num}</text>
+      <text x={x} y={y + 12} textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="11">{label}</text>
     </g>
   );
 
-  /* Arrow head */
-  const arrow = (id: string, color = "#10B981") => (
+  const arrow = (id: string) => (
     <marker key={id} id={id} markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill={color} />
+      <path d="M0,0 L0,6 L8,3 z" fill="#10B981" fillOpacity="0.6" />
     </marker>
   );
 
   return (
     <div style={{ overflowX: "auto", overflowY: "hidden" }}>
-      <svg viewBox="0 0 700 320" width="100%" style={{ maxWidth: 700, display: "block", margin: "0 auto", minWidth: 320 }}>
+      <svg viewBox="0 0 900 420" width="100%" style={{ display: "block", margin: "0 auto", minWidth: 380 }}>
         <defs>
-          {arrow("ah1")}
-          {arrow("ah2")}
-          {arrow("ah3")}
-          {arrow("ah4")}
-          {arrow("ah5")}
-          {arrow("ah6")}
+          {arrow("ah1")}{arrow("ah2")}{arrow("ah3")}
+          {arrow("ah4")}{arrow("ah5")}{arrow("ah6")}
         </defs>
 
-        {/* Connecting lines — animated dashes */}
         {/* 1 → 2 */}
-        <line x1="168" y1="100" x2="262" y2="100" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.5" markerEnd="url(#ah1)" className="flow-line" />
+        <line x1="242" y1="130" x2="358" y2="130" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.8" markerEnd="url(#ah1)" className="flow-line" />
         {/* 2 → 3 */}
-        <line x1="318" y1="100" x2="412" y2="100" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.5" markerEnd="url(#ah2)" className="flow-line" />
+        <line x1="442" y1="130" x2="558" y2="130" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.8" markerEnd="url(#ah2)" className="flow-line" />
         {/* 3 → 4 (non-enrolled) */}
-        <line x1="560" y1="128" x2="560" y2="210" stroke="rgba(16,185,129,0.35)" strokeOpacity="0.5" strokeWidth="1.5" markerEnd="url(#ah3)" className="flow-line-slow" />
+        <line x1="720" y1="172" x2="720" y2="268" stroke="rgba(16,185,129,0.4)" strokeWidth="1.8" markerEnd="url(#ah3)" className="flow-line-slow" />
         {/* 1 → 5 (enrolled) */}
-        <line x1="140" y1="128" x2="140" y2="210" stroke="rgba(16,185,129,0.35)" strokeOpacity="0.5" strokeWidth="1.5" markerEnd="url(#ah4)" className="flow-line-slow" />
-        {/* 2 feeds 1 loop */}
-        <path d="M290 72 Q290 30 140 30 Q140 70 140 72" fill="none" stroke="rgba(16,185,129,0.25)" strokeWidth="1.5" strokeDasharray="6 5" markerEnd="url(#ah5)" className="flow-line-slow" />
-        {/* Live call arrow */}
-        <line x1="468" y1="100" x2="532" y2="100" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.5" markerEnd="url(#ah6)" className="flow-line" />
+        <line x1="200" y1="172" x2="200" y2="268" stroke="rgba(16,185,129,0.4)" strokeWidth="1.8" markerEnd="url(#ah4)" className="flow-line-slow" />
+        {/* 2 feeds back to 1 (improvement loop) */}
+        <path d="M380 88 Q380 36 200 36 Q200 86 200 88" fill="none" stroke="rgba(16,185,129,0.3)" strokeWidth="1.5" strokeDasharray="7 5" markerEnd="url(#ah5)" className="flow-line-slow" />
+        {/* Live call → 3 */}
+        <line x1="642" y1="130" x2="678" y2="130" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1.8" markerEnd="url(#ah6)" className="flow-line" />
 
-        {/* Labels on lines */}
-        <text x="215" y="93" textAnchor="middle" fill="rgba(255,255,255,0.28)" fontSize="9">call data</text>
-        <text x="365" y="93" textAnchor="middle" fill="rgba(255,255,255,0.28)" fontSize="9">scripts</text>
-        <text x="215" y="30" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="8">continuous improvement</text>
-        <text x="576" y="175" fill="rgba(255,255,255,0.28)" fontSize="8">no sale</text>
-        <text x="148" y="175" fill="rgba(255,255,255,0.28)" fontSize="8">enrolled</text>
+        {/* Labels */}
+        <text x="300" y="120" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11">call data</text>
+        <text x="500" y="120" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11">scripts</text>
+        <text x="290" y="36" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize="10">continuous improvement</text>
+        <text x="744" y="226" fill="rgba(255,255,255,0.3)" fontSize="10">no sale</text>
+        <text x="210" y="226" fill="rgba(255,255,255,0.3)" fontSize="10">enrolled</text>
 
-        {/* System nodes */}
-        {node("01", "Pipeline", 140, 100)}
-        {node("02", "Scripts", 290, 100)}
-        {node("03", "Live Call", 440, 100)}
-        {node("04", "Reactivate", 560, 240)}
-        {node("05", "Retention", 140, 240)}
+        {/* Nodes */}
+        {node("01", "Pipeline", 200, 130)}
+        {node("02", "Scripts", 400, 130)}
+        {node("03", "Live Call", 600, 130)}
+        {node("04", "Reactivate", 720, 310)}
+        {node("05", "Retention", 200, 310)}
 
-        {/* "Lead In" label */}
-        <text x="50" y="104" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="10">Lead In</text>
-        <line x1="78" y1="100" x2="110" y2="100" stroke="rgba(255,255,255,0.2)" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#ah1)" />
+        {/* Lead In */}
+        <text x="68" y="134" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="12">Lead In</text>
+        <line x1="100" y1="130" x2="156" y2="130" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeDasharray="5 4" markerEnd="url(#ah1)" />
       </svg>
     </div>
   );
@@ -463,7 +423,7 @@ export default function SalesOSPage() {
 
       {/* ══ HOW IT WORKS TOGETHER ══════════════════════════ */}
       <section className="py-20 sm:py-28" style={{ background: "#0D0D0D", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="text-center mb-14 reveal">
             <p className="section-label mb-3">The Full Picture</p>
             <h2 className="font-extrabold text-white leading-tight"
@@ -492,101 +452,6 @@ export default function SalesOSPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ══ PACKAGES ══════════════════════════════════════ */}
-      <section className="py-20 sm:py-32" style={{ background: "#0A0A0A" }}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
-
-          <div className="text-center mb-14 reveal">
-            <p className="section-label mb-3">How We Work Together</p>
-            <h2 className="font-extrabold text-white leading-tight"
-              style={{ fontSize: "clamp(26px, 4vw, 50px)" }}>
-              Start With What You Need.{" "}
-              <span className="gradient-text">Scale As You Grow.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-            {packages.map((pkg, i) => (
-              <div
-                key={pkg.name}
-                className={`sos-pkg-card reveal stagger-${i + 1} ${pkg.popular ? "sos-pkg-card-popular" : ""}`}
-              >
-                {/* Popular badge */}
-                {pkg.popular && (
-                  <div className="mb-4">
-                    <span style={{
-                      display: "inline-flex", alignItems: "center",
-                      background: "rgba(16,185,129,0.12)",
-                      border: "1px solid rgba(16,185,129,0.3)",
-                      color: "#10B981",
-                      fontSize: 10, fontWeight: 700, letterSpacing: "0.08em",
-                      textTransform: "uppercase", borderRadius: 999,
-                      padding: "3px 10px",
-                    }}>Most Popular</span>
-                  </div>
-                )}
-                {!pkg.popular && <div className="mb-4" style={{ height: 24 }} />}
-
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginBottom: 6 }}>
-                  {pkg.name}
-                </h3>
-
-                <p style={{ fontSize: 12, color: "#555", marginBottom: 16, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                  {pkg.systems}
-                </p>
-
-                {/* Pricing */}
-                <div style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  borderRadius: 10, padding: "14px 16px", marginBottom: 16,
-                }}>
-                  <div style={{ marginBottom: 8 }}>
-                    <span style={{ fontSize: 10, color: "#555", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                      Setup
-                    </span>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginTop: 2 }}>{pkg.setup}</div>
-                  </div>
-                  <div>
-                    <span style={{ fontSize: 10, color: "#555", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                      Monthly
-                    </span>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: "#10B981", marginTop: 2 }}>{pkg.monthly}</div>
-                  </div>
-                </div>
-
-                <p style={{ fontSize: 13, color: "#707070", lineHeight: 1.5, marginBottom: 20, flexGrow: 1 }}>
-                  Best for: {pkg.bestFor}
-                </p>
-
-                <a
-                  href={DEMO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    padding: "11px 16px", borderRadius: 10, fontWeight: 700, fontSize: 14,
-                    textDecoration: "none", marginTop: "auto",
-                    background: pkg.popular ? "linear-gradient(135deg, #10B981, #065F46)" : "rgba(255,255,255,0.06)",
-                    border: pkg.popular ? "none" : "1px solid rgba(255,255,255,0.1)",
-                    color: "#fff",
-                    transition: "opacity 0.2s ease, background 0.2s ease",
-                  }}
-                >
-                  Book a Demo
-                </a>
-              </div>
-            ))}
-          </div>
-
-          {/* Note */}
-          <p className="text-center reveal" style={{ color: "#4A4A4A", fontSize: 13, maxWidth: 600, margin: "0 auto" }}>
-            All packages include full CRM and dialer integration. Setup fee covers custom configuration
-            to your specific stack and scripts. No per-seat fees. Cancel anytime.
-          </p>
         </div>
       </section>
 
