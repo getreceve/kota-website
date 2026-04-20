@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { DEMO_URL } from "@/lib/constants";
 import { useCountUp } from "@/hooks/useCountUp";
 import BrowserMockup from "./BrowserMockup";
+import CursorGlow from "./CursorGlow";
 
 function StatPill({
   prefix = "",
@@ -59,19 +60,8 @@ export default function Hero() {
       className="relative hero-bg noise overflow-hidden"
       style={{ paddingTop: 64 }}
     >
-      {/* Pulsing ambient radial orb */}
-      <div
-        className="hero-orb-pulse absolute pointer-events-none"
-        style={{
-          top: "8%",
-          left: "-8%",
-          width: "min(620px, 95vw)",
-          height: 440,
-          borderRadius: "50%",
-          background: "radial-gradient(ellipse, rgba(16,185,129,0.10) 0%, transparent 68%)",
-          filter: "blur(40px)",
-        }}
-      />
+      {/* Cursor-following gradient orbs */}
+      <CursorGlow />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-12 py-12 sm:py-16 lg:py-24">
 
@@ -137,7 +127,7 @@ export default function Hero() {
           <p className={`text-xs sm:text-sm mb-7 sm:mb-9 -mt-5 sm:-mt-6 ${cls("sub")}`} style={{ color: "#606060", maxWidth: 440 }}>
             Part of the{" "}
             <a href="/sales-os" style={{ color: "#10B981", textDecoration: "underline", textUnderlineOffset: 3 }}>
-              Kota Sales OS
+              Sales OS
             </a>
             . The complete AI operating system for debt settlement sales.
           </p>

@@ -685,6 +685,44 @@ body {
   .dot-grid { display: none; }
 }
 
+/* ─── Cursor-following orb ───────────────────────────── */
+/* Base centering transform for both orbs */
+.cursor-orb-1,
+.cursor-orb-2 {
+  transform: translate(-50%, -50%);
+}
+
+/* Mobile drift — overrides the static transform above */
+@keyframes cursor-orb-drift-1 {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) scale(1); }
+  33%       { transform: translate(-50%, -50%) translate(15vw, -10vh) scale(1.04); }
+  66%       { transform: translate(-50%, -50%) translate(-12vw, 12vh) scale(0.96); }
+}
+@keyframes cursor-orb-drift-2 {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) scale(1); }
+  33%       { transform: translate(-50%, -50%) translate(-10vw, 8vh) scale(1.06); }
+  66%       { transform: translate(-50%, -50%) translate(12vw, -14vh) scale(0.94); }
+}
+.orb-mobile-mode .cursor-orb-1 {
+  left: 35% !important;
+  top: 45% !important;
+  animation: cursor-orb-drift-1 14s ease-in-out infinite;
+}
+.orb-mobile-mode .cursor-orb-2 {
+  left: 63% !important;
+  top: 38% !important;
+  animation: cursor-orb-drift-2 9s ease-in-out infinite;
+}
+
+/* ─── Nav dropdown panel animation ──────────────────── */
+@keyframes nav-dropdown-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.nav-dropdown-animate {
+  animation: nav-dropdown-in 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 /* ─── Legal page back link ───────────────────────────── */
 .back-link {
   display: inline-flex;

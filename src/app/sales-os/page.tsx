@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import CursorGlow from "@/components/CursorGlow";
 import { DEMO_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -245,35 +246,14 @@ export default function SalesOSPage() {
           alignItems: "center",
         }}
       >
-        {/* Animated background orbs */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div
-            className="sos-orb-1 absolute"
-            style={{
-              top: "15%", left: "10%",
-              width: 600, height: 600,
-              borderRadius: "50%",
-              background: "radial-gradient(ellipse, rgba(16,185,129,0.12) 0%, transparent 65%)",
-              filter: "blur(60px)",
-            }}
-          />
-          <div
-            className="sos-orb-2 absolute"
-            style={{
-              bottom: "10%", right: "5%",
-              width: 500, height: 500,
-              borderRadius: "50%",
-              background: "radial-gradient(ellipse, rgba(6,95,70,0.10) 0%, transparent 65%)",
-              filter: "blur(50px)",
-            }}
-          />
-          {/* Subtle grid */}
-          <div style={{
-            position: "absolute", inset: 0,
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }} />
-        </div>
+        {/* Cursor-following gradient orbs */}
+        <CursorGlow />
+
+        {/* Subtle grid */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }} />
 
         <div className="relative max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 py-24 text-center w-full">
           {/* Eyebrow */}
