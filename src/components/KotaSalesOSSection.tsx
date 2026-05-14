@@ -79,20 +79,43 @@ export default function KotaSalesOSSection() {
         {/* Five system cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
           {systems.map((s, i) => (
-            <div key={s.num} className={`sos-system-card reveal stagger-${i + 1}`}>
+            <div
+              key={s.num}
+              className={`sos-system-card reveal stagger-${i + 1}`}
+              style={{ position: "relative", overflow: "hidden" }}
+            >
+              {/* Decorative background number */}
+              <span
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  right: 8,
+                  bottom: -8,
+                  fontSize: 80,
+                  fontWeight: 900,
+                  lineHeight: 1,
+                  color: "rgba(255,255,255,0.055)",
+                  pointerEvents: "none",
+                  userSelect: "none",
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                {s.num}
+              </span>
+
               {/* Icon */}
               <div style={{
                 width: 44, height: 44, borderRadius: 10,
                 background: "rgba(16,185,129,0.1)",
                 border: "1px solid rgba(16,185,129,0.2)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                flexShrink: 0,
+                flexShrink: 0, position: "relative",
               }}>
                 {s.icon}
               </div>
 
               {/* Number + Name */}
-              <div>
+              <div style={{ position: "relative" }}>
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "#10B981", textTransform: "uppercase" }}>
                   System {s.num}
                 </span>
@@ -102,7 +125,7 @@ export default function KotaSalesOSSection() {
               </div>
 
               {/* Description */}
-              <p style={{ fontSize: 13, color: "#707070", lineHeight: 1.6, flexGrow: 1 }}>
+              <p style={{ fontSize: 13, color: "#707070", lineHeight: 1.6, flexGrow: 1, position: "relative" }}>
                 {s.desc}
               </p>
             </div>

@@ -383,7 +383,7 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
       {/* ══ HERO ══════════════════════════════════════════ */}
       <section
         className="relative overflow-hidden"
-        style={{ background: "#0A0A0A", paddingTop: 64, minHeight: "84vh", display: "flex", alignItems: "center" }}
+        style={{ background: "#0D0B09", paddingTop: "calc(64px + var(--banner-h, 0px))", minHeight: "84vh", display: "flex", alignItems: "center" }}
       >
         <CursorGlow />
 
@@ -437,11 +437,11 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
 
         {/* Bottom fade */}
         <div className="absolute bottom-0 inset-x-0 h-24 pointer-events-none"
-          style={{ background: "linear-gradient(to bottom, transparent, #0A0A0A)" }} />
+          style={{ background: "linear-gradient(to bottom, transparent, #0D0B09)" }} />
       </section>
 
       {/* ══ PROBLEM ═══════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28" style={{ background: "#0A0A0A" }}>
+      <section className="relative py-20 sm:py-28" style={{ background: "#0D0B09" }}>
         <div className="dot-grid absolute inset-0" />
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 

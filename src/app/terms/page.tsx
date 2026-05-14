@@ -289,7 +289,7 @@ If you have any questions or need assistance regarding our SMS communications, p
 
 export default function TermsPage() {
   return (
-    <div style={{ background: "#0A0A0A", minHeight: "100vh", color: "#fff" }}>
+    <div style={{ background: "#0D0B09", minHeight: "100vh", color: "#fff" }}>
 
       {/* Sticky top bar */}
       <div

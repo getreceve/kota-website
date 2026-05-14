@@ -375,9 +375,10 @@ export default function Nav() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed inset-x-0 z-50 transition-all duration-300 ${
           scrolled || overlayOpen ? "nav-glass" : "nav-transparent"
         }`}
+        style={{ top: "var(--banner-h, 0px)" }}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[64px] lg:h-[68px]">
@@ -399,7 +400,7 @@ export default function Nav() {
                 href={DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary !py-2 !px-4 !text-xs sm:!py-2.5 sm:!px-5 sm:!text-sm"
+                className="btn-primary btn-nav-demo !py-2 !px-4 !text-xs sm:!py-2.5 sm:!px-5 sm:!text-sm"
               >
                 Book a Demo
               </a>
@@ -427,8 +428,8 @@ export default function Nav() {
             onClick={closeOverlay}
           />
           <div
-            className="mobile-overlay fixed top-0 right-0 bottom-0 z-[70] w-[82vw] max-w-[340px] flex flex-col lg:hidden"
-            style={{ background: "#0F0F0F", borderLeft: "1px solid rgba(255,255,255,0.07)" }}
+            className="mobile-overlay fixed right-0 bottom-0 z-[70] w-[82vw] max-w-[340px] flex flex-col lg:hidden"
+            style={{ top: 0, background: "#0F0F0F", borderLeft: "1px solid rgba(255,255,255,0.07)" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 h-[64px]" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>

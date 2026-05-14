@@ -137,7 +137,7 @@ const summaryPoints = [
 
 export default function PrivacyPage() {
   return (
-    <div style={{ background: "#0A0A0A", minHeight: "100vh", color: "#fff" }}>
+    <div style={{ background: "#0D0B09", minHeight: "100vh", color: "#fff" }}>
 
       {/* Sticky top bar */}
       <div

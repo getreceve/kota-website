@@ -54,7 +54,7 @@ export default function PricingPage() {
       <ScrollReveal />
       <Nav />
 
-      <main className="relative" style={{ background: "#0A0A0A", minHeight: "100vh", paddingTop: 100, paddingBottom: 80 }}>
+      <main className="relative" style={{ background: "#0D0B09", minHeight: "100vh", paddingTop: 100, paddingBottom: 80 }}>
         <div className="dot-grid absolute inset-0 pointer-events-none" />
 
         {/* ── Header ── */}

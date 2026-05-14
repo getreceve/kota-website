@@ -31,7 +31,7 @@ const proFeatures = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
+    <section id="pricing" className="py-24 lg:py-32" style={{ background: "#0D0B09" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14 reveal">

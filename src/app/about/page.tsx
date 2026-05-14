@@ -66,7 +66,7 @@ export default function AboutPage() {
       <section
         className="relative overflow-hidden"
         style={{
-          background: "#0A0A0A",
+          background: "#0D0B09",
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
@@ -140,7 +140,7 @@ export default function AboutPage() {
       {/* ══ STORY ════════════════════════════════════════ */}
       <section
         className="relative py-24 sm:py-32"
-        style={{ background: "#0A0A0A" }}
+        style={{ background: "#0D0B09" }}
       >
         <div className="max-w-[740px] mx-auto px-5 sm:px-8" style={{ position: "relative" }}>
 
@@ -296,7 +296,7 @@ export default function AboutPage() {
       {/* ══ THREE PILLARS ════════════════════════════════ */}
       <section
         className="relative py-20 sm:py-32 overflow-hidden"
-        style={{ background: "#0A0A0A" }}
+        style={{ background: "#0D0B09" }}
       >
         <DotGrid opacity={0.04} />
         <div className="relative max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
@@ -462,7 +462,7 @@ export default function AboutPage() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 padding: "16px 40px", borderRadius: 12,
-                background: "#fff", color: "#0A0A0A",
+                background: "#fff", color: "#0D0B09",
                 fontWeight: 700, fontSize: 16,
                 textDecoration: "none",
                 boxShadow: "0 0 48px rgba(16,185,129,0.3)",

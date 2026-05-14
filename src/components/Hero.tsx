@@ -58,7 +58,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative hero-bg noise overflow-hidden"
-      style={{ paddingTop: 64 }}
+      style={{ paddingTop: "calc(64px + var(--banner-h, 0px))" }}
     >
       {/* Cursor-following gradient orbs */}
       <CursorGlow />
@@ -86,8 +86,8 @@ export default function Hero() {
 
           {/* Headline — word-by-word animation, 80 ms stagger */}
           <h1
-            className="font-extrabold text-white leading-[1.06] tracking-tight mb-5 sm:mb-6"
-            style={{ fontSize: "clamp(34px, 7vw, 60px)" }}
+            className="font-extrabold text-white leading-[1.06] mb-5 sm:mb-6"
+            style={{ fontSize: "clamp(34px, 7vw, 60px)", letterSpacing: "-0.03em" }}
           >
             {/* Line 1: "Your Top Closer" */}
             <span className="block" style={{ marginBottom: "0.05em" }}>
@@ -116,8 +116,15 @@ export default function Hero() {
             style={{ maxWidth: 480 }}
           >
             Kota analyzes every call, indexes every objection and rebuttal, and
-            gives your entire debt settlement team access to what your best rep
-            already knows.{" "}
+            gives your entire{" "}
+            <span style={{
+              background: "linear-gradient(90deg, #ffffff 0%, #e8e0d4 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              fontWeight: 500,
+            }}>debt settlement team</span>{" "}
+            access to what your best rep already knows.{" "}
             <span className="text-white font-medium">
               Stop leaving enrollable accounts on the table.
             </span>
@@ -177,7 +184,7 @@ export default function Hero() {
       {/* Bottom fade */}
       <div
         className="absolute bottom-0 inset-x-0 h-28 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, #0A0A0A)" }}
+        style={{ background: "linear-gradient(to bottom, transparent, #0D0B09)" }}
       />
     </section>
   );

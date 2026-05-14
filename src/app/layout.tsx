@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
+import LenisProvider from "@/components/LenisProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,7 +44,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased bg-[#0A0A0A]">{children}</body>
+      <body className="font-sans antialiased" style={{ background: "#0D0B09" }}>
+        <LenisProvider />
+        <AnnouncementBanner />
+        {children}
+      </body>
     </html>
   );
 }

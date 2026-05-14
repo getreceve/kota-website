@@ -46,7 +46,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#0A0A0A", borderTop: "1px solid #1a1a1a" }}>
+    <footer style={{ background: "#0D0B09", borderTop: "1px solid #1a1a1a" }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-14">
 
         {/* Top section: brand + link columns */}

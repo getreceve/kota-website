@@ -70,7 +70,7 @@ export default function BrowserMockup() {
           {/* Sidebar */}
           <div
             className="hidden sm:flex flex-col gap-1 py-4 px-2"
-            style={{ width: 120, borderRight: "1px solid rgba(255,255,255,0.05)", background: "#0A0A0A", flexShrink: 0 }}
+            style={{ width: 120, borderRight: "1px solid rgba(255,255,255,0.05)", background: "#0D0B09", flexShrink: 0 }}
           >
             {[
               { label: "Dashboard", icon: "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z", active: false },

@@ -32,7 +32,7 @@ const problems = [
 
 export default function Problem() {
   return (
-    <section id="problem" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0A0A0A" }}>
+    <section id="problem" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0D0B09" }}>
       <div className="dot-grid absolute inset-0" />
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}

@@ -239,8 +239,8 @@ export default function SalesOSPage() {
       <section
         className="relative overflow-hidden"
         style={{
-          background: "#0A0A0A",
-          paddingTop: 64,
+          background: "#0D0B09",
+          paddingTop: "calc(64px + var(--banner-h, 0px))",
           minHeight: "90vh",
           display: "flex",
           alignItems: "center",
@@ -310,7 +310,7 @@ export default function SalesOSPage() {
       </section>
 
       {/* ══ THE FIVE SYSTEMS ══════════════════════════════ */}
-      <section className="relative py-20 sm:py-32" style={{ background: "#0A0A0A" }}>
+      <section className="relative py-20 sm:py-32" style={{ background: "#0D0B09" }}>
         <div className="dot-grid absolute inset-0" />
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
@@ -531,7 +531,7 @@ export default function SalesOSPage() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 padding: "16px 36px", borderRadius: 12,
-                background: "#fff", color: "#0A0A0A",
+                background: "#fff", color: "#0D0B09",
                 fontWeight: 700, fontSize: 16,
                 textDecoration: "none",
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",

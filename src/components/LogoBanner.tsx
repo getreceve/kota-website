@@ -53,7 +53,7 @@ export default function LogoBanner() {
     <section
       className="relative overflow-hidden"
       style={{
-        background: "#0A0A0A",
+        background: "#0D0B09",
         borderTop: "1px solid rgba(255,255,255,0.05)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
         paddingTop: 28,
