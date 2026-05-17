@@ -5,9 +5,27 @@ import { DEMO_URL } from "@/lib/constants";
 
 const STORAGE_KEY = "kota-banner-dismissed-v1";
 const BANNER_H = 44;
+const INTERVAL_MS = 5000;
+
+const MESSAGES = [
+  {
+    text: "Built by debt settlement sales veterans.",
+    cta: "See how Kota works →",
+    href: DEMO_URL,
+    external: true,
+  },
+  {
+    text: "See how much revenue your team is leaving on the table.",
+    cta: "Calculate now →",
+    href: "/roi-calculator",
+    external: false,
+  },
+] as const;
 
 export default function AnnouncementBanner() {
   const [visible, setVisible] = useState(false);
+  const [msgIdx, setMsgIdx] = useState(0);
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem(STORAGE_KEY)) {
@@ -16,6 +34,19 @@ export default function AnnouncementBanner() {
     }
   }, []);
 
+  // Alternate messages every INTERVAL_MS with a fade transition
+  useEffect(() => {
+    if (!visible) return;
+    const id = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setMsgIdx((i) => (i + 1) % MESSAGES.length);
+        setFading(false);
+      }, 350); // fade out duration
+    }, INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [visible]);
+
   function dismiss() {
     setVisible(false);
     localStorage.setItem(STORAGE_KEY, "1");
@@ -23,6 +54,8 @@ export default function AnnouncementBanner() {
   }
 
   if (!visible) return null;
+
+  const msg = MESSAGES[msgIdx];
 
   return (
     <div
@@ -52,6 +85,7 @@ export default function AnnouncementBanner() {
         }}
       />
 
+      {/* Message — fades on transition */}
       <p
         style={{
           fontSize: "clamp(11px, 2vw, 13px)",
@@ -60,13 +94,20 @@ export default function AnnouncementBanner() {
           margin: 0,
           paddingLeft: 16,
           paddingRight: 40,
+          opacity: fading ? 0 : 1,
+          transition: "opacity 0.35s ease",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "calc(100vw - 80px)",
+          textAlign: "center",
         }}
       >
-        Built by debt settlement sales veterans.{" "}
+        {msg.text}{" "}
         <a
-          href={DEMO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={msg.href}
+          target={msg.external ? "_blank" : undefined}
+          rel={msg.external ? "noopener noreferrer" : undefined}
           style={{
             color: "#10B981",
             textDecoration: "underline",
@@ -75,7 +116,7 @@ export default function AnnouncementBanner() {
             whiteSpace: "nowrap",
           }}
         >
-          See how Kota works →
+          {msg.cta}
         </a>
       </p>
 

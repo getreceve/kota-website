@@ -735,6 +735,71 @@ body {
   animation: nav-dropdown-in 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* ─── ROI Calculator — slider & input ───────────────── */
+.roi-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  display: block;
+  /* background set via inline style for dynamic fill */
+}
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2.5px solid #111110;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.22);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.roi-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 5px rgba(16,185,129,0.32);
+  transform: scale(1.08);
+}
+.roi-slider:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 6px rgba(16,185,129,0.38);
+}
+.roi-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2.5px solid #111110;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.22);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+.roi-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #262624;
+}
+
+.roi-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.roi-input:focus {
+  border-color: rgba(16,185,129,0.5);
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.08);
+}
+.roi-input::placeholder { color: #3a3a38; }
+
 /* ─── Final CTA dark glass button ───────────────────── */
 .cta-dark-btn {
   background: rgba(0, 0, 0, 0.30);

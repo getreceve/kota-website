@@ -152,6 +152,9 @@ export default function Hero() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
+            <a href="/roi-calculator" className="btn-ghost !text-sm sm:!text-base">
+              Calculate Your ROI →
+            </a>
             <a href="#how-it-works" className="btn-ghost !text-sm sm:!text-base">
               See How It Works
             </a>

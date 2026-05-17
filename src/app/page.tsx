@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import LogoBanner from "@/components/LogoBanner";
 import KotaSalesOSSection from "@/components/KotaSalesOSSection";
 import Problem from "@/components/Problem";
+import ROIPreviewSection from "@/components/ROIPreviewSection";
 import ProductScreenshot from "@/components/ProductScreenshot";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
@@ -20,6 +21,7 @@ export default function Home() {
       <LogoBanner />
       <KotaSalesOSSection />
       <Problem />
+      <ROIPreviewSection />
       <ProductScreenshot />
       <HowItWorks />
       <Features />
