@@ -2,27 +2,30 @@
 
 import { useEffect, useState } from "react";
 import { DEMO_URL } from "@/lib/constants";
+import { getVerticalConfig } from "@/config/verticals";
 
 const STORAGE_KEY = "kota-banner-dismissed-v1";
 const BANNER_H = 44;
 const INTERVAL_MS = 5000;
 
-const MESSAGES = [
-  {
-    text: "Built by debt settlement sales veterans.",
-    cta: "See how Kota works →",
-    href: DEMO_URL,
-    external: true,
-  },
-  {
-    text: "See how much revenue your team is leaving on the table.",
-    cta: "Calculate now →",
-    href: "/roi-calculator",
-    external: false,
-  },
-] as const;
-
 export default function AnnouncementBanner() {
+  const cfg = getVerticalConfig();
+
+  const MESSAGES = [
+    {
+      text: cfg.announcementBanner.primaryText,
+      cta: "See how Kota works →",
+      href: DEMO_URL,
+      external: true,
+    },
+    {
+      text: "See how much revenue your team is leaving on the table.",
+      cta: "Calculate now →",
+      href: "/roi-calculator",
+      external: false,
+    },
+  ] as const;
+
   const [visible, setVisible] = useState(false);
   const [msgIdx, setMsgIdx] = useState(0);
   const [fading, setFading] = useState(false);
@@ -34,7 +37,6 @@ export default function AnnouncementBanner() {
     }
   }, []);
 
-  // Alternate messages every INTERVAL_MS with a fade transition
   useEffect(() => {
     if (!visible) return;
     const id = setInterval(() => {
@@ -42,10 +44,10 @@ export default function AnnouncementBanner() {
       setTimeout(() => {
         setMsgIdx((i) => (i + 1) % MESSAGES.length);
         setFading(false);
-      }, 350); // fade out duration
+      }, 350);
     }, INTERVAL_MS);
     return () => clearInterval(id);
-  }, [visible]);
+  }, [visible, MESSAGES.length]);
 
   function dismiss() {
     setVisible(false);
@@ -85,7 +87,7 @@ export default function AnnouncementBanner() {
         }}
       />
 
-      {/* Message — fades on transition */}
+      {/* Message */}
       <p
         style={{
           fontSize: "clamp(11px, 2vw, 13px)",

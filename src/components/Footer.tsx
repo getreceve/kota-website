@@ -1,6 +1,7 @@
 "use client";
 
 import { DEMO_URL } from "@/lib/constants";
+import { getVerticalConfig } from "@/config/verticals";
 
 const Logo = () => (
   // eslint-disable-next-line @next/next/no-img-element
@@ -46,6 +47,8 @@ const columns = [
 ];
 
 export default function Footer() {
+  const { footer } = getVerticalConfig();
+
   return (
     <footer style={{ background: "#0D0B09", borderTop: "1px solid #1a1a1a" }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-14">
@@ -72,10 +75,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns:
-              mobile  → 2 columns (2×2)
-              sm      → 4 columns
-              lg      → 4 columns (inside col-span-4) */}
+          {/* Link columns */}
           <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-8">
             {columns.map((col) => (
               <div key={col.heading}>
@@ -111,10 +111,10 @@ export default function Footer() {
           style={{ borderTop: "1px solid #1a1a1a" }}
         >
           <p className="text-xs" style={{ color: "#444" }}>
-            &copy; 2026 Kota. All rights reserved.
+            &copy; 2026 {footer.copyrightEntity}. All rights reserved.
           </p>
           <p className="text-xs" style={{ color: "#333" }}>
-            Built for debt settlement sales teams.
+            {footer.tagline}
           </p>
         </div>
       </div>

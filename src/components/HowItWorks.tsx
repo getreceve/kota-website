@@ -1,39 +1,24 @@
 "use client";
 
-const steps = [
-  {
-    number: "01",
-    title: "Connect Your Calls",
-    body: "Upload recordings or paste transcripts. Kota handles everything from there — no configuration, no tagging, no manual setup required.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-      </svg>
-    ),
-  },
-  {
-    number: "02",
-    title: "Intelligence Builds Automatically",
-    body: "Every call gets transcribed, segmented, scored, and indexed without anyone lifting a finger. The system learns what wins for your specific team.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-  },
-  {
-    number: "03",
-    title: "Your Team Compounds",
-    body: "Reps get pre-call intelligence on objections. Managers get post-call analysis. Every account makes the whole team smarter, permanently.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
-  },
+import { getVerticalConfig } from "@/config/verticals";
+
+const STEP_ICONS = [
+  <svg key="0" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+  </svg>,
+  <svg key="1" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+  </svg>,
+  <svg key="2" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+  </svg>,
 ];
 
+const STEP_NUMBERS = ["01", "02", "03"];
+
 export default function HowItWorks() {
+  const { howItWorks } = getVerticalConfig();
+
   return (
     <section id="how-it-works" className="relative py-16 sm:py-24 lg:py-32" style={{ background: "#0D0D0D" }}>
       <div className="dot-grid absolute inset-0" />
@@ -50,10 +35,10 @@ export default function HowItWorks() {
           </h2>
         </div>
 
-        {/* Steps — stacked on mobile, horizontal on lg+ */}
+        {/* Steps */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-6 relative">
 
-          {/* Connecting line — desktop only, draws left→right on scroll */}
+          {/* Connecting line — desktop only */}
           <div
             className="hidden lg:block absolute z-0 h-px reveal-draw-x"
             style={{
@@ -64,7 +49,7 @@ export default function HowItWorks() {
             }}
           />
 
-          {/* Mobile vertical connector — draws top→bottom on scroll */}
+          {/* Mobile vertical connector */}
           <div
             className="lg:hidden absolute left-[39px] z-0 reveal-draw-y"
             style={{
@@ -75,12 +60,11 @@ export default function HowItWorks() {
             }}
           />
 
-          {steps.map((step, i) => (
+          {howItWorks.steps.map((step, i) => (
             <div
               key={i}
               className={`flex flex-col lg:items-center lg:text-center reveal stagger-${i + 1} relative z-10`}
             >
-              {/* Step circle — step-num-circle gets a one-shot pulse via CSS when .visible is added */}
               <div className="relative mb-5 sm:mb-7 flex-shrink-0 self-start lg:self-auto">
                 <div
                   className="step-num-circle w-20 h-20 rounded-full flex items-center justify-center"
@@ -90,7 +74,7 @@ export default function HowItWorks() {
                     color: "#10B981",
                   }}
                 >
-                  {step.icon}
+                  {STEP_ICONS[i]}
                 </div>
                 <span
                   className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center font-bold text-white"
@@ -102,7 +86,7 @@ export default function HowItWorks() {
 
               <div className="lg:hidden pl-1">
                 <div className="text-xs font-bold mb-2" style={{ color: "#10B981", letterSpacing: "0.15em" }}>
-                  {step.number}
+                  {STEP_NUMBERS[i]}
                 </div>
                 <h3 className="text-white font-bold mb-2 text-lg">{step.title}</h3>
                 <p className="text-[#A0A0A0] text-sm leading-relaxed">{step.body}</p>
@@ -110,7 +94,7 @@ export default function HowItWorks() {
 
               <div className="hidden lg:block">
                 <div className="text-xs font-bold mb-3" style={{ color: "#10B981", letterSpacing: "0.15em" }}>
-                  {step.number}
+                  {STEP_NUMBERS[i]}
                 </div>
                 <h3 className="text-white font-bold mb-3" style={{ fontSize: 19 }}>{step.title}</h3>
                 <p className="text-[#A0A0A0] text-sm leading-relaxed max-w-xs">{step.body}</p>

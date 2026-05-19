@@ -2,6 +2,8 @@
 // Shows static metric cards pre-populated with calculator defaults.
 // No sliders or interactivity — just the results + a CTA to the full page.
 
+import { getVerticalConfig } from "@/config/verticals";
+
 // Defaults mirror the ROICalculator component defaults
 const REPS = 10;
 const LEADS = 80;
@@ -91,7 +93,12 @@ function PreviewCard({
 }
 
 export default function ROIPreviewSection() {
+  const { roi } = getVerticalConfig();
   const m = compute();
+
+  const nounPlural = roi.nounPlural;
+  const verbPast = roi.verbPastTense;
+  const capNounPlural = nounPlural.charAt(0).toUpperCase() + nounPlural.slice(1);
 
   return (
     <section
@@ -116,9 +123,7 @@ export default function ROIPreviewSection() {
             className="text-sm sm:text-base leading-relaxed"
             style={{ color: "#707070", maxWidth: 540 }}
           >
-            Most sales managers know they&apos;re losing enrollable accounts.
-            They just don&apos;t know how many or what it&apos;s costing them.
-            Now you can.
+            {roi.previewSubheadline}
           </p>
         </div>
 
@@ -132,7 +137,7 @@ export default function ROIPreviewSection() {
               color: "#606060",
             }}
           >
-            10 reps · 80 leads/mo · 22% close rate · $100 CPL · $1,750/enrollment
+            {roi.previewDefaultsLabel}
           </span>
         </div>
 
@@ -146,11 +151,11 @@ export default function ROIPreviewSection() {
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <PreviewCard
-              label="Enrollments now / month"
+              label={`${capNounPlural} now / month`}
               value={fmt(m.enrollmentsNow)}
             />
             <PreviewCard
-              label="Enrollments with Kota / month"
+              label={`${capNounPlural} with Kota / month`}
               value={fmt(m.enrollmentsKota)}
               sub="conservative +20% lift"
               highlight
@@ -182,7 +187,7 @@ export default function ROIPreviewSection() {
               accent
             />
             <PreviewCard
-              label="Cost per enrolled client"
+              label={`Cost per ${verbPast} client`}
               value={fmtDollar(m.costPerClient)}
               sub={`drops to ${fmtDollar(m.costPerClientKota)} with Kota`}
             />

@@ -6,27 +6,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CursorGlow from "@/components/CursorGlow";
 import FinalCTA from "@/components/FinalCTA";
 import { DEMO_URL } from "@/lib/constants";
+import { getVerticalConfig } from "@/config/verticals";
+import type { UseCaseData } from "@/config/verticals/types";
 
-/* ─── Types ────────────────────────────────────────── */
-interface ProblemCard {
-  icon: React.ReactNode;
-  title: string;
-  body: string;
-}
-interface Feature {
-  icon: React.ReactNode;
-  title: string;
-  body: string;
-}
-interface UseCaseData {
-  hero: { headline: string; subheadline: string };
-  problem: { headline: string; cards: ProblemCard[] };
-  solution: { headline: string; features: Feature[] };
-  outcome: { statement: string };
-}
-
-/* ─── Shared icons ─────────────────────────────────── */
-const Ic = {
+/* ─── Icon dictionary ──────────────────────────────── */
+const Ic: Record<string, React.ReactNode> = {
   trendUp: (
     <svg width="20" height="20" fill="none" stroke="#10B981" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -151,209 +135,6 @@ const Ic = {
   ),
 };
 
-/* ─── All 5 pages' data ────────────────────────────── */
-const DATA: Record<string, UseCaseData> = {
-  "increase-enrollment-rate": {
-    hero: {
-      headline: "Stop Leaving Enrollable Accounts On The Table",
-      subheadline:
-        "Most debt settlement reps are losing accounts they should be winning. Not because of skill. Because they don't have access to what already works.",
-    },
-    problem: {
-      headline: "The Pattern Repeats Every Month",
-      cards: [
-        {
-          icon: Ic.user,
-          title: "Same objections, different outcomes",
-          body: "Your top rep handles the debt-to-income objection one way. Your bottom rep handles it another way. Neither knows what the other is doing. The difference shows up in your enrollment numbers every single month.",
-        },
-        {
-          icon: Ic.phone,
-          title: "No pre-call intelligence",
-          body: "Reps pick up the phone knowing almost nothing about the account. They discover the hardship, the creditor mix, and the objections in real time, with no data on what has worked for similar accounts before.",
-        },
-        {
-          icon: Ic.doc,
-          title: "No post-call learning",
-          body: "Every call contains a lesson. Without a system to capture and index those lessons, the same mistakes repeat indefinitely. Your institutional knowledge walks out the door every time a rep leaves.",
-        },
-      ],
-    },
-    solution: {
-      headline: "What Changes When Every Rep Has Intelligence",
-      features: [
-        { icon: Ic.doc, title: "Pre-call account briefing", body: "Every rep enters every call with a summary of similar past accounts, the objections that came up, and what worked." },
-        { icon: Ic.bolt, title: "Objection playbook from your own calls", body: "Your winning rebuttals — indexed and searchable — built from the calls your team has already made." },
-        { icon: Ic.star, title: "Call scoring against your script standards", body: "Every call is scored after it ends, so reps know exactly where they fell off and what to fix." },
-        { icon: Ic.chart, title: "Rep performance benchmarked to your team", body: "Leaderboards and gap reports built from actual calls, not manager gut feel." },
-      ],
-    },
-    outcome: {
-      statement: "The reps who enroll the most aren't always the most talented. They're the most prepared.",
-    },
-  },
-
-  "reduce-ramp-time": {
-    hero: {
-      headline: "New Reps Performing in Weeks. Not Months.",
-      subheadline:
-        "Every day a new rep spends ramping is a day they're not enrolling accounts. Kota compresses that window by giving new reps access to everything your best reps already know.",
-    },
-    problem: {
-      headline: "The Ramp Problem Is a Knowledge Problem",
-      cards: [
-        {
-          icon: Ic.user,
-          title: "Veterans carry the playbook in their heads",
-          body: "Your best reps have handled every objection, worked every type of account, and developed a feel for when to push and when to back off. None of that is written down anywhere.",
-        },
-        {
-          icon: Ic.x,
-          title: "New reps learn by failing",
-          body: "Without a system that captures institutional knowledge, new reps spend months making avoidable mistakes on live accounts. Every failed call is a learning opportunity that costs you a potential enrollment.",
-        },
-        {
-          icon: Ic.layers,
-          title: "Training is one-size-fits-all",
-          body: "Generic onboarding doesn't reflect how your team specifically sells, what your specific prospects object to, or what your specific top performers do differently.",
-        },
-      ],
-    },
-    solution: {
-      headline: "Built-In Intelligence From Day One",
-      features: [
-        { icon: Ic.doc, title: "Call library of your best performing calls", body: "New reps can study real examples of your top closers handling every objection from their first day." },
-        { icon: Ic.bolt, title: "Pre-call briefings from your own enrollment history", body: "Before every call, new reps get context on similar past accounts — the same intelligence veterans have built up over years." },
-        { icon: Ic.star, title: "Objection playbook from your own winning rebuttals", body: "What actually works with your specific prospect base, indexed by objection type and outcome." },
-        { icon: Ic.chart, title: "Personal performance tracking from call one", body: "New reps see their own gaps immediately. They don't have to wait for a manager review to know where to improve." },
-      ],
-    },
-    outcome: {
-      statement: "When new reps have access to what your veterans already know, they stop reinventing the wheel and start closing.",
-    },
-  },
-
-  "eliminate-blind-spots": {
-    hero: {
-      headline: "Full Visibility Into Every Call. Without Listening to a Single Recording.",
-      subheadline:
-        "Most sales managers have no real idea what is happening on their team's calls. Kota changes that without adding hours to your week.",
-    },
-    problem: {
-      headline: "Management Shouldn't Be Guesswork",
-      cards: [
-        {
-          icon: Ic.headphones,
-          title: "Listening to calls doesn't scale",
-          body: "A manager with 15 reps cannot meaningfully review enough calls to coach effectively. They cherry pick a few, miss the patterns, and rely on gut feel for the rest.",
-        },
-        {
-          icon: Ic.database,
-          title: "CRM data tells you outcomes, not reasons",
-          body: "Your CRM shows you who enrolled and who didn't. It doesn't tell you why. The reason lives in the call and nobody has time to find it.",
-        },
-        {
-          icon: Ic.clock,
-          title: "Coaching happens after the fact",
-          body: "By the time a manager identifies a pattern and coaches to it, weeks have passed and the same mistake has cost you multiple potential enrollments.",
-        },
-      ],
-    },
-    solution: {
-      headline: "Automated Visibility Across Every Call",
-      features: [
-        { icon: Ic.star, title: "Every call automatically scored", body: "Kota scores every call against your script standards immediately after it ends. No manual review required." },
-        { icon: Ic.eye, title: "Objection patterns surfaced in real time", body: "See which objections your team is losing to, which reps are struggling, and what the difference looks like across your call library." },
-        { icon: Ic.chart, title: "Rep performance dashboard updated automatically", body: "After every analyzed call, every rep's performance metrics update. Managers always have a live view." },
-        { icon: Ic.chat, title: "Call Coach AI answers questions about any rep", body: "Ask specific questions about any rep using real call data. No more guessing what's happening on the floor." },
-      ],
-    },
-    outcome: {
-      statement: "You shouldn't have to listen to 40 hours of calls to know what your team needs. Your data should tell you.",
-    },
-  },
-
-  "reactivate-dead-leads": {
-    hero: {
-      headline: "You Already Paid For These Leads. Start Using Them.",
-      subheadline:
-        "The average debt settlement company has thousands of leads in their CRM that went cold and were never followed up on. That is revenue sitting idle.",
-    },
-    problem: {
-      headline: "Your CRM Is Full of Untapped Revenue",
-      cards: [
-        {
-          icon: Ic.clock,
-          title: "Leads go cold, then get forgotten",
-          body: "A prospect doesn't answer, gets marked as no contact, and disappears into the database. Nobody follows up systematically. The lead cost the same whether it converts or not.",
-        },
-        {
-          icon: Ic.filter,
-          title: "No scoring, no prioritization",
-          body: "Without a system that scores leads by reactivation likelihood, re-engagement campaigns are either too broad to be effective or too narrow to generate meaningful volume.",
-        },
-        {
-          icon: Ic.mail,
-          title: "Generic outreach doesn't convert",
-          body: "Sending the same message to every dead lead ignores the context of why they didn't convert in the first place. Personalized reactivation based on their original profile performs dramatically better.",
-        },
-      ],
-    },
-    solution: {
-      headline: "Systematic Reactivation Built on Your Own Data",
-      features: [
-        { icon: Ic.filter, title: "AI scoring of dead leads by reactivation probability", body: "The system identifies your highest-probability reactivation candidates so your team focuses on leads most likely to respond." },
-        { icon: Ic.mail, title: "Multi-channel sequences via SMS, email, and voicemail", body: "Automated follow-up across every channel, timed to maximize response rates without manual effort." },
-        { icon: Ic.shuffle, title: "Automatic routing of responding leads", body: "When a lead responds, it routes automatically to the right rep with full context on the account's history." },
-        { icon: Ic.doc, title: "Pre-call briefing loaded for every reactivated lead", body: "Kota automatically prepares the rep with everything that happened the first time around before they make the call." },
-      ],
-    },
-    outcome: {
-      statement: "A 5 percent reactivation rate on 5,000 dead leads is 250 new conversations. With leads you already paid for.",
-    },
-  },
-
-  "reduce-client-dropout": {
-    hero: {
-      headline: "Enrolled Clients Who Drop Out Cost You Everything.",
-      subheadline:
-        "When a client drops out before their debts are settled, you lose every fee you would have earned on unsettled accounts. Most dropout is preventable.",
-    },
-    problem: {
-      headline: "Dropout Is a Communication Problem",
-      cards: [
-        {
-          icon: Ic.bell,
-          title: "Clients don't know what's happening",
-          body: "After enrollment, most clients hear nothing until there is news on an account. Silence breeds anxiety and anxiety leads to dropout. Proactive communication at every milestone changes this.",
-        },
-        {
-          icon: Ic.alert,
-          title: "Missed payments go unaddressed",
-          body: "By the time a missed payment is noticed and followed up on, the client has already mentally checked out. Early warning systems catch the signal before it becomes a cancellation.",
-        },
-        {
-          icon: Ic.layers,
-          title: "Onboarding is overwhelming",
-          body: "Clients who don't fully understand the program are more likely to panic when creditors call or when progress feels slow. Structured onboarding content delivered automatically prevents this.",
-        },
-      ],
-    },
-    solution: {
-      headline: "Automated Communication That Keeps Clients Enrolled",
-      features: [
-        { icon: Ic.userPlus, title: "Personalized welcome and onboarding sequences", body: "Triggered the moment a client enrolls, setting expectations clearly before anxiety can take hold." },
-        { icon: Ic.flag, title: "Milestone communication at every key program point", body: "Clients hear from you automatically at settlement milestones, keeping them engaged and confident throughout the program." },
-        { icon: Ic.calendar, title: "Payment reminder sequences before each monthly payment", body: "Automated reminders reduce payment failures and eliminate the friction that leads clients to cancel." },
-        { icon: Ic.shield, title: "Early warning re-engagement for at-risk clients", body: "The system flags clients who miss a payment or go dark and automatically initiates a re-engagement sequence." },
-      ],
-    },
-    outcome: {
-      statement: "A 10 percent improvement in client retention on 100 enrolled clients is 10 clients who complete the program. That is significant fee revenue recovered.",
-    },
-  },
-};
-
 /* ─── Sub-components ───────────────────────────────── */
 function IconBox({ children }: { children: React.ReactNode }) {
   return (
@@ -372,7 +153,8 @@ function IconBox({ children }: { children: React.ReactNode }) {
 
 /* ─── Page template ────────────────────────────────── */
 export default function UseCasePageTemplate({ slug }: { slug: string }) {
-  const data = DATA[slug];
+  const cfg = getVerticalConfig();
+  const data: UseCaseData | undefined = cfg.useCases[slug];
   if (!data) return null;
 
   return (
@@ -387,7 +169,6 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
       >
         <CursorGlow />
 
-        {/* Subtle grid overlay */}
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
@@ -435,7 +216,6 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
           </div>
         </div>
 
-        {/* Bottom fade */}
         <div className="absolute bottom-0 inset-x-0 h-24 pointer-events-none"
           style={{ background: "linear-gradient(to bottom, transparent, #0D0B09)" }} />
       </section>
@@ -463,7 +243,7 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
                 style={{ borderLeft: "2px solid rgba(16,185,129,0.4)" }}
               >
                 <div className="mb-4">
-                  <IconBox>{card.icon}</IconBox>
+                  <IconBox>{Ic[card.iconKey]}</IconBox>
                 </div>
                 <h3 className="text-white font-bold mb-2.5 text-base sm:text-[17px]">{card.title}</h3>
                 <p className="text-[#888] text-sm leading-relaxed" style={{ lineHeight: 1.75 }}>{card.body}</p>
@@ -487,14 +267,13 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
             </h2>
           </div>
 
-          {/* 2×2 feature grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {data.solution.features.map((feat, i) => (
               <div
                 key={i}
                 className={`card p-6 sm:p-7 flex gap-4 reveal stagger-${i + 1}`}
               >
-                <IconBox>{feat.icon}</IconBox>
+                <IconBox>{Ic[feat.iconKey]}</IconBox>
                 <div>
                   <h3 className="text-white font-bold mb-2 text-base">{feat.title}</h3>
                   <p className="text-[#888] text-sm" style={{ lineHeight: 1.75 }}>{feat.body}</p>
@@ -510,12 +289,10 @@ export default function UseCasePageTemplate({ slug }: { slug: string }) {
         className="relative py-20 sm:py-24 overflow-hidden"
         style={{ background: "#111111", borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}
       >
-        {/* Subtle center glow */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(16,185,129,0.05) 0%, transparent 65%)",
         }} />
 
-        {/* Decorative lines */}
         <div className="absolute inset-0 flex items-center pointer-events-none" aria-hidden="true">
           <div className="w-full h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(16,185,129,0.12) 30%, rgba(16,185,129,0.12) 70%, transparent)" }} />
         </div>

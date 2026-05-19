@@ -1,14 +1,11 @@
 "use client";
 
 import { DEMO_URL } from "@/lib/constants";
-
-const statPills = [
-  "No per-seat fees",
-  "Full CRM integration",
-  "Onboarding included",
-];
+import { getVerticalConfig } from "@/config/verticals";
 
 export default function FinalCTA() {
+  const { finalCTA } = getVerticalConfig();
+
   return (
     <section
       id="cta"
@@ -115,7 +112,7 @@ export default function FinalCTA() {
 
         {/* Stat pills */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 reveal">
-          {statPills.map((pill, i) => (
+          {finalCTA.statPills.map((pill, i) => (
             <span
               key={pill}
               className={`reveal stagger-${i + 1}`}
@@ -160,10 +157,10 @@ export default function FinalCTA() {
             textShadow: "0 0 60px rgba(16,185,129,0.30)",
           }}
         >
-          Stop Leaving{" "}
-          <span style={{ color: "#34D399" }}>Enrollable Accounts</span>{" "}
+          {finalCTA.headlinePrefix}{" "}
+          <span style={{ color: "#34D399" }}>{finalCTA.headlineAccent}</span>{" "}
           <br />
-          On The Table.
+          {finalCTA.headlineSuffix}
         </h2>
 
         {/* Subheadline */}
@@ -177,8 +174,7 @@ export default function FinalCTA() {
             lineHeight: 1.65,
           }}
         >
-          Join debt settlement sales teams using Kota to turn every call into a
-          competitive advantage.
+          {finalCTA.subheadline}
         </p>
 
         {/* CTA button */}

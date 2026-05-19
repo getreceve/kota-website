@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DEMO_URL } from "@/lib/constants";
+import { getVerticalConfig } from "@/config/verticals";
 
 // ── Helpers ────────────────────────────────────────────────────────────
 function fmt(n: number) {
@@ -116,6 +117,8 @@ function MetricCard({
 
 // ── Main component ─────────────────────────────────────────────────────
 export default function ROICalculator() {
+  const { roi } = getVerticalConfig();
+
   // ── Slider state ───────────────────────────────────────────────────
   const [reps, setReps] = useState(10);
   const [leadsPerRep, setLeadsPerRep] = useState(80);
@@ -185,6 +188,10 @@ export default function ROICalculator() {
     }
   }
 
+  const noun = roi.nounSingular;
+  const nounPlural = roi.nounPlural;
+  const verbPast = roi.verbPastTense;
+
   return (
     <div className="w-full flex flex-col gap-5">
 
@@ -204,7 +211,7 @@ export default function ROICalculator() {
         </p>
 
         <RoiSlider
-          label="Number of reps"
+          label={roi.repsLabel}
           value={reps}
           min={2} max={50} step={1}
           display={String(reps)}
@@ -212,7 +219,7 @@ export default function ROICalculator() {
         />
 
         <RoiSlider
-          label="Leads per rep per month"
+          label={roi.leadsPerRepLabel}
           value={leadsPerRep}
           min={20} max={300} step={5}
           display={fmt(leadsPerRep)}
@@ -220,8 +227,8 @@ export default function ROICalculator() {
         />
 
         <RoiSlider
-          label="Cost per lead"
-          hint="What you pay per lead before qualification"
+          label={roi.costPerLeadLabel}
+          hint={roi.costPerLeadHint}
           value={costPerLead}
           min={25} max={500} step={5}
           display={fmtDollar(costPerLead)}
@@ -229,8 +236,8 @@ export default function ROICalculator() {
         />
 
         <RoiSlider
-          label="Current close rate"
-          hint="Industry average: 20–30%"
+          label={roi.closeRateLabel}
+          hint={roi.closeRateHint}
           value={closeRate}
           min={5} max={60} step={1}
           display={`${closeRate}%`}
@@ -244,7 +251,7 @@ export default function ROICalculator() {
               }}
             >
               <span className="text-xs" style={{ color: "#505050" }}>
-                Cost per enrolled client
+                Cost per {verbPast} client
               </span>
               <span className="text-xs font-bold tabular-nums" style={{ color: "#8A8A88" }}>
                 {fmtDollar(costPerClient)}
@@ -254,8 +261,8 @@ export default function ROICalculator() {
         />
 
         <RoiSlider
-          label="Revenue per enrollment"
-          hint="First month program fee collected on enrollment"
+          label={roi.revenueLabel}
+          hint={roi.revenueHint}
           value={revenuePerEnrollment}
           min={500} max={5000} step={50}
           display={fmtDollar(revenuePerEnrollment)}
@@ -280,11 +287,11 @@ export default function ROICalculator() {
 
         <div className="grid grid-cols-2 gap-3">
           <MetricCard
-            label="Enrollments now / month"
+            label={`${nounPlural.charAt(0).toUpperCase() + nounPlural.slice(1)} now / month`}
             value={fmt(enrollmentsNow)}
           />
           <MetricCard
-            label="Enrollments with Kota / month"
+            label={`${nounPlural.charAt(0).toUpperCase() + nounPlural.slice(1)} with Kota / month`}
             value={fmt(enrollmentsKota)}
             sub="conservative +20% lift"
             highlight
@@ -311,13 +318,13 @@ export default function ROICalculator() {
           <MetricCard
             label="Annual upside"
             value={fmtDollar(annualUpside)}
-            sub="revenue + recovered lead spend"
+            sub={`revenue + recovered lead spend`}
             highlight
             accent
             large
           />
           <MetricCard
-            label="Cost per enrolled client"
+            label={`Cost per ${verbPast} client`}
             value={fmtDollar(Math.round(costPerClient))}
             sub={`drops to ${fmtDollar(costPerClientKota)} with Kota`}
           />
@@ -341,13 +348,13 @@ export default function ROICalculator() {
         <ul className="flex flex-col gap-3.5">
           <li className="text-sm leading-relaxed" style={{ color: "#B0B0A8" }}>
             <span style={{ color: "#34D399", fontWeight: 600 }}>
-              {fmt(additionalEnrollments)} more enrollments per month
+              {fmt(additionalEnrollments)} more {nounPlural} per month
             </span>{" "}
             from leads you&apos;re already paying for — no increase in ad
             spend required.
           </li>
           <li className="text-sm leading-relaxed" style={{ color: "#B0B0A8" }}>
-            At {fmtDollar(revenuePerEnrollment)} per enrollment, that&apos;s{" "}
+            At {fmtDollar(revenuePerEnrollment)} per {noun}, that&apos;s{" "}
             <span style={{ color: "#34D399", fontWeight: 600 }}>
               {fmtDollar(additionalRevenue)} in additional monthly revenue
             </span>{" "}
@@ -505,7 +512,6 @@ export default function ROICalculator() {
             border: "1px solid rgba(16,185,129,0.18)",
           }}
         >
-          {/* Check icon */}
           <div
             className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
             style={{
