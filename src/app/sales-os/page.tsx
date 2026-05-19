@@ -270,7 +270,7 @@ export default function SalesOSPage() {
             className="font-extrabold text-white leading-[1.05] tracking-tight mb-6"
             style={{ fontSize: "clamp(32px, 6vw, 72px)" }}
           >
-            <span className="about-word about-word-1">The Complete AI Operating System</span>
+            <span className="about-word about-word-1">The Complete AI Operating System</span>{" "}
             <br />
             <span className="about-word about-word-2 gradient-text">for Debt Settlement Sales</span>
           </h1>
@@ -319,7 +319,7 @@ export default function SalesOSPage() {
             <p className="section-label mb-3">The Five Systems</p>
             <h2 className="font-extrabold text-white leading-tight"
               style={{ fontSize: "clamp(26px, 4vw, 52px)" }}>
-              Every Part of Your Operation.<br />
+              Every Part of Your Operation.{" "}<br />
               <span className="gradient-text">One Integrated Platform.</span>
             </h2>
           </div>
@@ -517,7 +517,7 @@ export default function SalesOSPage() {
             className="font-extrabold text-white leading-tight mb-6 reveal"
             style={{ fontSize: "clamp(28px, 5vw, 56px)" }}
           >
-            Your Competitors Are Still<br />Doing This Manually
+            Your Competitors Are Still{" "}<br />Doing This Manually
           </h2>
           <p className="mb-10 reveal" style={{ color: "rgba(255,255,255,0.55)", fontSize: "clamp(15px, 2vw, 18px)", lineHeight: 1.7 }}>
             Every month you wait is another month of calls that never get analyzed, scripts that never improve,

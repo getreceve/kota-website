@@ -126,14 +126,14 @@ export default function AnnouncementBanner() {
         aria-label="Dismiss announcement"
         style={{
           position: "absolute",
-          right: 12,
+          right: 6,
           top: "50%",
           transform: "translateY(-50%)",
           background: "none",
           border: "none",
           cursor: "pointer",
           color: "#505050",
-          padding: 4,
+          padding: 10,
           lineHeight: 0,
           display: "flex",
           alignItems: "center",

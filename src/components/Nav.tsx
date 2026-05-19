@@ -177,6 +177,7 @@ function NavDropdown({
     item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
   );
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = () => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -185,9 +186,19 @@ function NavDropdown({
   const handleMouseLeave = () => {
     timerRef.current = setTimeout(() => setOpen(false), 80);
   };
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setOpen((prev) => !prev);
+    }
+    if (e.key === "Escape") {
+      setOpen(false);
+    }
+  };
 
   return (
     <div
+      ref={wrapperRef}
       className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -196,6 +207,9 @@ function NavDropdown({
       <button
         className="flex items-center gap-1.5 text-sm font-medium transition-colors duration-200"
         style={{ color: isActive ? "#ffffff" : "#A0A0A0", background: "none", border: "none", cursor: "pointer", padding: "4px 0" }}
+        aria-expanded={open}
+        aria-haspopup="true"
+        onKeyDown={handleKeyDown}
       >
         {label}
         <Chevron open={open} />

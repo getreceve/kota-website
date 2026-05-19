@@ -161,7 +161,7 @@ export default function FinalCTA() {
           }}
         >
           Stop Leaving{" "}
-          <span style={{ color: "#34D399" }}>Enrollable Accounts</span>
+          <span style={{ color: "#34D399" }}>Enrollable Accounts</span>{" "}
           <br />
           On The Table.
         </h2>

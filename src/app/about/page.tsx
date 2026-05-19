@@ -286,7 +286,7 @@ export default function AboutPage() {
           }}>
             This is not software built by people who{" "}
             <span style={{ color: "#10B981" }}>read</span> about your industry.
-            <br className="hidden sm:block" />
+            {" "}<br className="hidden sm:block" />
             It was built by people who{" "}
             <span style={{ color: "#10B981" }}>worked</span> in it.
           </p>
