@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import LenisProvider from "@/components/LenisProvider";
-import { getVerticalConfig } from "@/config/verticals";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,28 +10,38 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const cfg = getVerticalConfig();
-
 export const metadata: Metadata = {
-  title: cfg.meta.title,
-  description: cfg.meta.description,
-  metadataBase: new URL(cfg.meta.metadataBase),
+  title: "Kota — Sales Intelligence That Actually Coaches",
+  description:
+    "Score every sales call against your own playbook. Surface where deals are won and lost. Coach reps in minutes, not hours.",
+  metadataBase: new URL("https://www.getkota.ai"),
   icons: {
     icon: "/brand logos/KOTA-LOGO-RGB_01-ICON.svg",
     apple: "/brand logos/KOTA-LOGO-RGB_01-ICON.svg",
   },
   openGraph: {
-    title: cfg.meta.title,
-    description: cfg.meta.description,
-    url: cfg.meta.metadataBase,
+    title: "Kota — Sales Intelligence That Actually Coaches",
+    description:
+      "Score every sales call against your own playbook. Surface where deals are won and lost. Coach reps in minutes, not hours.",
+    url: "https://www.getkota.ai",
     siteName: "Kota",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image-light.png",
+        width: 1200,
+        height: 630,
+        alt: "Kota — Sales Intelligence That Actually Coaches",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: cfg.meta.title,
-    description: cfg.meta.description,
+    title: "Kota — Sales Intelligence That Actually Coaches",
+    description:
+      "Score every sales call against your own playbook. Surface where deals are won and lost. Coach reps in minutes, not hours.",
+    images: ["/og-image-light.png"],
   },
 };
 
@@ -44,9 +52,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased" style={{ background: "#0D0B09" }}>
+      <body className="font-sans antialiased" style={{ background: "#FAFAF7" }}>
         <LenisProvider />
-        <AnnouncementBanner />
         {children}
       </body>
     </html>

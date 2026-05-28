@@ -686,6 +686,32 @@ body {
   animation: card-border-glow-pulse 3.5s ease-in-out infinite;
 }
 
+/* ─── Live status dot (mock UI panels, clairvo-style) ── */
+@keyframes live-dot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: live-dot-pulse 2s ease-in-out infinite;
+}
+
+/* ─── Mock bar-chart fill grow-in ────────────────────── */
+.mock-bar-fill {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible .mock-bar-fill,
+.reveal-left.visible .mock-bar-fill,
+.reveal-right.visible .mock-bar-fill {
+  transform: scaleX(1);
+}
+
 /* ─── prefers-reduced-motion — disable all animations ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

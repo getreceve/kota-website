@@ -31,6 +31,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local-only redesign artifacts (review screenshots + capture/audit scripts)
+/screenshots
+/scripts
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

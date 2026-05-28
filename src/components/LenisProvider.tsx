@@ -8,6 +8,11 @@ export default function LenisProvider() {
   useEffect(() => {
     let rafId: number;
 
+    // Dev-only escape hatch: ?nolenis disables smooth scroll (used for screenshot capture)
+    if (typeof window !== "undefined" && window.location.search.includes("nolenis")) {
+      return;
+    }
+
     import("lenis").then(({ default: Lenis }) => {
       const lenis = new Lenis({
         duration: 0.8,
